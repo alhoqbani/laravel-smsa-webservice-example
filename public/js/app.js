@@ -50632,6 +50632,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.status = false;
+            this.message = '';
             var vm = this;
             this.form.get('/api/tracking/status').then(function (data) {
                 _this.status = data.status;
@@ -51053,6 +51054,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.showTrack = false;
+            this.message = '';
             var vm = this;
             this.form.get('/api/tracking/track').then(function (data) {
                 _this.track = data.track;

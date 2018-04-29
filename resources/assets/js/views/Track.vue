@@ -103,6 +103,7 @@
         methods: {
             submitForm() {
                 this.showTrack = false;
+                this.message = '';
                 let vm = this;
                 this.form.get('/api/tracking/track')
 

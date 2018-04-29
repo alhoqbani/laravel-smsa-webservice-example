@@ -72,6 +72,7 @@
         methods: {
             submitForm() {
                 this.status = false;
+                this.message = '';
                 let vm = this;
                 this.form.get('/api/tracking/status')
 
