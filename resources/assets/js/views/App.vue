@@ -6,25 +6,21 @@
 
                     <nav class="nav nav-pills nav-justified">
                         <router-link class="nav-item nav-link"
-                                     to="/"
-                                     activeClass="active"
+                                     :to="{name: 'home'}"
                                      exact>Home
-
                         </router-link>
                         <router-link class="nav-item nav-link"
-                                     to="/locations"
-                                     activeClass="active">Locations
+                                     :to="{name: 'locations'}">Locations
                         </router-link>
                         <router-link class="nav-item nav-link"
-                                     to="/Tracking"
-                                     activeClass="active">Tracking
+                                     :to="{name: 'track'}">Tracking
                         </router-link>
                         <router-link class="nav-item nav-link"
-                                     to="/shipments"
-                                     activeClass="active">Shipments
+                                     :to="{name: 'shipments'}">Shipments
                         </router-link>
                     </nav>
 
+                    <hr>
 
                     <router-view></router-view>
                 </div>

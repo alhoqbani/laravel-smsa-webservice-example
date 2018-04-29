@@ -1,6 +1,6 @@
 import './bootstrap';
 import Vue from 'vue';
-import router from './routes';
+import router from './router';
 import App from './views/App';
 
 window.Vue = Vue;
