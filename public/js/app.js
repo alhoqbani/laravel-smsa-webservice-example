@@ -50362,7 +50362,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'Tracking'
+    name: 'Tracking',
+
+    mounted: function mounted() {
+
+        // axios.get('/api/tracking/status', {params: {awb: 290019315792}})
+        //     .then(res => console.log(res))
+        //     .catch(err => console.log(err.response));
+
+
+        axios.get('/api/tracking/track', { params: { awb: 290019315792 } }).then(function (res) {
+            return console.log(res);
+        }).catch(function (err) {
+            return console.log(err.response);
+        });
+    }
 });
 
 /***/ }),

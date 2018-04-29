@@ -22,4 +22,8 @@ $router->group(['middleware' => 'auth:api'], function (Router $router) {
 
     $router->get('retails/{city?}', 'Api\RetailsController@index');
 
+    $router->get('tracking/status', 'Api\TrackingController@status');
+
+    $router->get('tracking/track', 'Api\TrackingController@track');
+
 });
