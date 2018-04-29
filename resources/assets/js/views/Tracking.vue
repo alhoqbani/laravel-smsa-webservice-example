@@ -1,6 +1,5 @@
 <template>
-    <div>
-
+    <div class="mt-auto">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <router-link class="nav-link" :to="{ name: 'track' }">Track</router-link>
@@ -11,7 +10,6 @@
         </ul>
 
         <router-view></router-view>
-
     </div>
 </template>
 
