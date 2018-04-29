@@ -30,7 +30,7 @@ class TrackingController extends Controller
         } catch (SmsaWebServiceException $e) {
 
             return response()->json([
-                'error' => $e->getMessage(),
+                'message' => $e->getMessage(),
                 'type' => get_class($e)
             ], 400);
 
@@ -56,7 +56,7 @@ class TrackingController extends Controller
         } catch (SmsaWebServiceException $e) {
 
             return response()->json([
-                'error' => $e->getMessage(),
+                'message' => $e->getMessage(),
                 'type' => get_class($e)
             ], 400);
 

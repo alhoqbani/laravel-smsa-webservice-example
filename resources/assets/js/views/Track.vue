@@ -1,6 +1,6 @@
 <template>
     <div class="mt-5">
-        <div class="row justify-content-center" v-if="message">
+        <div class="row justify-content-center" v-if="message && !this.form.busy">
             <div class="col-12">
                 <div class="alert alert-dismissible fade show"
                      :class="[this.form.successful ? 'alert-info' : 'alert-danger']">
@@ -16,7 +16,7 @@
                     <input id="awb" type="text"
                            class="form-control" :class="{'is-invalid': form.errors.has('awb')}"
                            name="awb" placeholder="awb" v-model="form.data.awb">
-
+                    <small class="text-muted">Example: 290019315792</small>
                     <span class="invalid-feedback" v-show="form.errors.has('awb')">{{ form.errors.get('awb') }}</span>
                 </div>
 
@@ -86,7 +86,6 @@
             return {
                 form: new LaravelForm({
                     awb: '',
-                    reason: '',
                 }),
                 message: '',
                 showTrack: false,
@@ -113,11 +112,7 @@
                     })
 
                     .catch(response => {
-
-                        if (response.status === 400) {
-                            vm.message = response.data.error;
-                        }
-
+                        vm.message = response.data.message;
                     });
             }
         }

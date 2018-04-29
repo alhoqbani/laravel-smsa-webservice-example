@@ -24,7 +24,7 @@ class RetailsController extends Controller
 
         } catch (RequestError $e) {
             return response()->json([
-                'error' => $e->getMessage()
+                'message' => $e->getMessage()
             ], 400);
         }
 
