@@ -11,12 +11,16 @@
 |
 */
 
-Route::get('/', function () {
+/** @var \Illuminate\Routing\Router $router */
+
+$router->get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+$router->get('/home', 'HomeController@index')->name('home');
 
-Route::get('home/{any}', 'HomeController@index')->where('any', '.*');
+$router->get('home/{any}', 'HomeController@index')->where('any', '.*');
+
+$router->redirect('/register', '/login');
