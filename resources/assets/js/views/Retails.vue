@@ -6,6 +6,13 @@
 
 <script>
     export default {
-        name: 'Retails'
+        name: 'Retails',
+
+
+        mounted() {
+            axios.get('/api/retails')
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+        }
     }
 </script>

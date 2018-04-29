@@ -13934,9 +13934,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
+var api_token = document.head.querySelector('meta[name="api-token"]');
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
@@ -50170,7 +50172,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'Retails'
+    name: 'Retails',
+
+    mounted: function mounted() {
+        axios.get('/api/retails').then(function (res) {
+            return console.log(res);
+        }).catch(function (err) {
+            return console.log(err);
+        });
+    }
 });
 
 /***/ }),

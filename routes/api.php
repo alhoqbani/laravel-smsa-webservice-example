@@ -16,3 +16,16 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::middleware('auth:api')->get('/retails', function () {
+
+    return response()->json([
+        'retails' => [
+            1,
+            2,
+            3,
+        ],
+    ]);
+
+});
