@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Routing\Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
+/** @var Router $router */
 
-Route::middleware('auth:api')->get('/retails', function () {
+$router->group(['middleware' => 'auth:api'], function (Router $router) {
 
-    return response()->json([
-        'retails' => [
-            1,
-            2,
-            3,
-        ],
-    ]);
+    $router->get('cities', 'Api\CityController@index');
+
 
 });

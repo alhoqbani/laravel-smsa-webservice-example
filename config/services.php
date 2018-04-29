@@ -35,4 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'smsa' => [
+        'key' => env('SMSA_PASSKEY')
+    ]
+
 ];
