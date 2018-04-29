@@ -50187,6 +50187,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'App'
@@ -50203,7 +50226,57 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-12" }, [_c("router-view")], 1)
+        _c(
+          "div",
+          { staticClass: "col-md-12" },
+          [
+            _c(
+              "nav",
+              { staticClass: "nav nav-pills nav-justified" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-item nav-link",
+                    attrs: { to: "/", activeClass: "active", exact: "" }
+                  },
+                  [_vm._v("Home\n\n                    ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-item nav-link",
+                    attrs: { to: "/locations", activeClass: "active" }
+                  },
+                  [_vm._v("Locations\n                    ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-item nav-link",
+                    attrs: { to: "/Tracking", activeClass: "active" }
+                  },
+                  [_vm._v("Tracking\n                    ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-item nav-link",
+                    attrs: { to: "/shipments", activeClass: "active" }
+                  },
+                  [_vm._v("Shipments\n                    ")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("router-view")
+          ],
+          1
+        )
       ])
     ])
   ])
