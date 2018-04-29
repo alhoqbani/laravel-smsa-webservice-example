@@ -47159,8 +47159,8 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Home__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_Home__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_Retails__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_Retails___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_Retails__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_Locations__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_Locations___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_Locations__);
 
 
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
@@ -47178,7 +47178,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_0_vue_
     }, {
         path: '/retails',
         name: 'retails',
-        component: __WEBPACK_IMPORTED_MODULE_3__views_Retails___default.a
+        component: __WEBPACK_IMPORTED_MODULE_3__views_Locations___default.a
     }]
 }));
 
@@ -50112,15 +50112,18 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(42)
 /* script */
-var __vue_script__ = __webpack_require__(54)
+var __vue_script__ = __webpack_require__(57)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(58)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -50137,7 +50140,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/views/Retails.vue"
+Component.options.__file = "resources/assets/js/views/Locations.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -50146,9 +50149,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e926ee66", Component.options)
+    hotAPI.createRecord("data-v-148797ca", Component.options)
   } else {
-    hotAPI.reload("data-v-e926ee66", Component.options)
+    hotAPI.reload("data-v-148797ca", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -50159,7 +50162,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50172,10 +50175,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'Retails',
+    name: 'Locations',
 
     mounted: function mounted() {
-        axios.get('/api/retails').then(function (res) {
+        axios.get('/api/cities').then(function (res) {
             return console.log(res);
         }).catch(function (err) {
             return console.log(err);
@@ -50184,14 +50187,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    Retails Page\n")])
+  return _c("div", [_vm._v("\n    Locations Page\n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50199,7 +50202,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e926ee66", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-148797ca", module.exports)
   }
 }
 

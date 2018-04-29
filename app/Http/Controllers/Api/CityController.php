@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use Alhoqbani\SmsaWebService\Exceptions\RequestError;
 use Alhoqbani\SmsaWebService\Smsa;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CityController extends Controller
@@ -18,8 +18,22 @@ class CityController extends Controller
      */
     public function index(Smsa $smsa)
     {
-        return response()->json([
-            'cities'
-        ]);
+
+        try {
+
+            $cities = $smsa->cities()->data;
+
+            return response()->json([
+                'cities' => $cities,
+            ]);
+
+        } catch (RequestError $e) {
+
+            return response()->json([
+                'error' => $e->getMessage()
+            ], 400);
+
+        }
+
     }
 }

@@ -3,7 +3,7 @@ import Vue from "vue";
 Vue.use(VueRouter);
 
 import Home from '../views/Home'
-import Retails from '../views/Retails'
+import Locations from '../views/Locations'
 
 export default new VueRouter({
    mode: 'history',
@@ -17,7 +17,7 @@ export default new VueRouter({
        {
            path: '/retails',
            name: 'retails',
-           component: Retails,
+           component: Locations,
        },
    ]
 });

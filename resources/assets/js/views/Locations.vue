@@ -1,18 +1,19 @@
 <template>
     <div>
-        Retails Page
+        Locations Page
     </div>
 </template>
 
 <script>
     export default {
-        name: 'Retails',
+        name: 'Locations',
 
 
         mounted() {
-            axios.get('/api/retails')
+            axios.get('/api/cities')
                 .then(res => console.log(res))
                 .catch(err => console.log(err));
         }
     }
+
 </script>
