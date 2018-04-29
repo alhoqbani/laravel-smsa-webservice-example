@@ -20,5 +20,6 @@ $router->group(['middleware' => 'auth:api'], function (Router $router) {
 
     $router->get('cities', 'Api\CityController@index');
 
+    $router->get('retails/{city?}', 'Api\RetailsController@index');
 
 });

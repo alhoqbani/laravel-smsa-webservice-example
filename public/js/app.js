@@ -50178,7 +50178,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'Locations',
 
     mounted: function mounted() {
-        axios.get('/api/cities').then(function (res) {
+
+        // axios.get('/api/cities')
+        //     .then(res => console.log(res))
+        //     .catch(err => console.log(err));
+
+        axios.get('/api/retails/ruh').then(function (res) {
             return console.log(res);
         }).catch(function (err) {
             return console.log(err);
