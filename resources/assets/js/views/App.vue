@@ -35,7 +35,7 @@
         name: 'App',
         created() {
             window.smsaCities = this.cities;
-            window.retails = this.retails;
+            window.smsaRetails = this.retails;
         }
     }
 </script>

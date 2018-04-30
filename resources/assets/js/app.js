@@ -1,7 +1,7 @@
 import './bootstrap';
+import './google-maps';
 import Vue from 'vue';
 import router from './router';
-import App from './views/App';
 
 window.Vue = Vue;
 
