@@ -37,15 +37,19 @@ class ShipmentsController extends Controller
         // We add the shipper if we have shipper details
         if (true === $request->input('addShipper', false)) {
 
+            $shipperDetails = $data['shipper'];
+
             $shipper = new Shipper(
-                data_get($data, 'shipper.name'),
-                data_get($data, 'shipper.contactName'),
-                data_get($data, 'shipper.addressLine1'),
-                data_get($data, 'shipper.addressLine2', ''),
-                data_get($data, 'shipper.city'),
-                data_get($data, 'shipper.country'),
-                data_get($data, 'shipper.phone')
+                $shipperDetails['name'],
+                $shipperDetails['contactName'],
+                $shipperDetails['addressLine1'],
+                $shipperDetails['city'],
+                $shipperDetails['country'],
+                $shipperDetails['phone']
             );
+
+            $shipper->setAddressLine2($shipperDetails['addressLine2'] ?? '');
+
 
             $shipment->setShipper($shipper);
         }
