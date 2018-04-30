@@ -19,11 +19,11 @@
 
 <script>
     import CreateShipment from '../components/CreateShipment';
-    import DeleteShipment from '../components/DeleteShipment';
+    import CancelShipment from '../components/CancelShipment';
 
     export default {
         name: 'Shipments',
-        components: { CreateShipment, DeleteShipment },
+        components: { CreateShipment, CancelShipment },
 
         data() {
             return {
@@ -34,8 +34,8 @@
                         title: 'Create Shipment'
                     },
                     {
-                        name: 'DeleteShipment',
-                        title: 'Delete Shipment'
+                        name: 'CancelShipment',
+                        title: 'Cancel Shipment'
                     },
                 ]
             }

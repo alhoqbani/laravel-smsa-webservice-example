@@ -28,5 +28,7 @@ $router->group(['middleware' => 'auth:api'], function (Router $router) {
 
     // Shipments
     $router->post('shipments', 'Api\ShipmentsController@store');
+    
+    $router->delete('shipments/{awb}', 'Api\ShipmentsController@destroy');
 
 });

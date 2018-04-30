@@ -50,6 +50,13 @@ class LaravelForm {
         return this.submitForm(request);
     }
 
+    delete(url, config) {
+
+        let request = axois.delete(url, config);
+
+        return this.submitForm(request);
+    }
+
     submitForm(request) {
 
         return new Promise((resolve, reject) => {

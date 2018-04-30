@@ -9,6 +9,7 @@ use Alhoqbani\SmsaWebService\Models\Shipper;
 use Alhoqbani\SmsaWebService\Smsa;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\StoreShipmentRequest;
+use Illuminate\Http\Request;
 
 class ShipmentsController extends Controller
 {
@@ -88,6 +89,25 @@ class ShipmentsController extends Controller
                 $e->smsaResponse->jsonSerialize()
                 , 400);
         }
+    }
+
+    public function destroy($awb, Request $request, Smsa $smsa)
+    {
+        $data = $request->validate([
+            'reason' => ['required'],
+        ]);
+
+        // Disable throwing exceptions
+        $smsa->shouldUseExceptions = false;
+
+        $result = $smsa->cancel($awb, $data['reason']);
+
+        if ($result->success) {
+            return response()->json($result->jsonSerialize(), 202);
+        } else {
+            return response()->json($result->jsonSerialize(), 400);
+        }
+
     }
 
 }
