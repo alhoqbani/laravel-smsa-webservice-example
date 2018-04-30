@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
 class StoreShipmentRequest extends FormRequest
 {
@@ -23,24 +24,26 @@ class StoreShipmentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'customer.name'         => ['required'],
-            'customer.mobile'       => ['required'],
-            'customer.addressLine1' => ['required'],
-            'customer.city'         => ['required'],
-            'customer.country'      => ['required'],
+        $rules = $this->mandatoryFields();
 
+        $shipperFields = [
+            'shipper.name'         => ['required'],
+            'shipper.contactName'  => ['required'],
+            'shipper.addressLine1' => ['required'],
+            'shipper.city'         => ['required'],
+            'shipper.country'      => ['required'],
+            'shipper.phone'        => ['required'],
+
+            'shipper.addressLine2' => [''],
+        ];
+
+        $optionalFields = [
             'customer.addressLine2' => [''],
             'customer.zipCode'      => [''],
             'customer.POBox'        => [''],
             'customer.tel1'         => [''],
             'customer.tel2'         => [''],
             'customer.email'        => [''],
-
-            'shipment.type'            => ['required'],
-            'shipment.referenceNumber' => ['required'],
-            'shipment.itemsCount'      => ['required'],
-            'shipment.weight'          => ['required'],
 
             'shipment.id'              => [''],
             'shipment.description'     => [''],
@@ -52,16 +55,34 @@ class StoreShipmentRequest extends FormRequest
             'shipment.insurance'       => [''],
             'shipment.deliveryDate'    => [''],
             'shipment.gpsPoints'       => [''],
+        ];
 
-            'shipper.name'         => ['required'],
-            'shipper.contactName'  => ['required'],
-            'shipper.addressLine1' => ['required'],
-            'shipper.city'         => ['required'],
-            'shipper.country'      => ['required'],
-            'shipper.phone'        => ['required'],
+        if ($this->input('addShipper')) {
+            $rules = array_merge($rules, $shipperFields);
+        }
 
-            'shipper.addressLine2' => [''],
+        if (false === $this->input('minimumFields', false)) {
+            $rules = array_merge($rules, $optionalFields);
+        }
 
+        return $rules;
+
+    }
+
+    private function mandatoryFields()
+    {
+
+        return [
+            'customer.name'         => ['required'],
+            'customer.mobile'       => ['required'],
+            'customer.addressLine1' => ['required'],
+            'customer.city'         => ['required'],
+            'customer.country'      => ['required'],
+
+            'shipment.type'            => ['required'],
+            'shipment.referenceNumber' => ['required'],
+            'shipment.itemsCount'      => ['required'],
+            'shipment.weight'          => ['required'],
         ];
     }
 }

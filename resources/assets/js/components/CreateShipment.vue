@@ -31,15 +31,38 @@
 
         <div class="row py-1">
             <div class="mx-auto col-lg-6 mt-lg-2">
-                <!-- form customer info -->
-                <div class="card">
-                    <div class="card-header" @click="openCard.customer = ! openCard.customer" style="cursor: pointer">
-                        <h4 class="mb-0"><i class="fas"
-                                            :class="[openCard.customer ? 'fa-caret-down' : 'fa-caret-right']"></i>
-                            Customer</h4>
+                <div class="form-group form-row">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="all-fields" name="allFields"
+                               class="custom-control-input"
+                               :value="false" v-model="minimumFields">
+                        <label class="custom-control-label"
+                               for="all-fields">Display all fields.</label>
                     </div>
-                    <div class="card-body" v-show="openCard.customer">
-                        <form class="form" role="form">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="minimum-fields" name="minimumFields"
+                               class="custom-control-input"
+                               :value="true" v-model="minimumFields">
+                        <label class="custom-control-label"
+                               for="minimum-fields">Display only minimum required fields.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="form" role="form">
+
+            <div class="row py-1">
+                <div class="mx-auto col-lg-6 mt-lg-2">
+                    <!-- form customer info -->
+                    <div class="card">
+                        <div class="card-header" @click="openCard.customer = ! openCard.customer"
+                             style="cursor: pointer">
+                            <h4 class="mb-0"><i class="fas"
+                                                :class="[openCard.customer ? 'fa-caret-down' : 'fa-caret-right']"></i>
+                                Customer</h4>
+                        </div>
+                        <div class="card-body" v-show="openCard.customer">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="customer-name">Name</label>
@@ -200,24 +223,23 @@
                                     </span>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
+                    <!-- /form user info -->
                 </div>
-                <!-- /form user info -->
             </div>
-        </div>
 
-        <div class="row py-1">
-            <div class="mx-auto col-lg-6 mt-md-2">
-                <!-- form shipment info -->
-                <div class="card">
-                    <div class="card-header" @click="openCard.shipment = ! openCard.shipment" style="cursor: pointer">
-                        <h4 class="mb-0"><i class="fas"
-                                            :class="[openCard.shipment ? 'fa-caret-down' : 'fa-caret-right']"></i>
-                            Shipment</h4>
-                    </div>
-                    <div class="card-body" v-show="openCard.shipment">
-                        <form class="form" role="form">
+            <div class="row py-1">
+                <div class="mx-auto col-lg-6 mt-md-2">
+                    <!-- form shipment info -->
+                    <div class="card">
+                        <div class="card-header" @click="openCard.shipment = ! openCard.shipment"
+                             style="cursor: pointer">
+                            <h4 class="mb-0"><i class="fas"
+                                                :class="[openCard.shipment ? 'fa-caret-down' : 'fa-caret-right']"></i>
+                                Shipment</h4>
+                        </div>
+                        <div class="card-body" v-show="openCard.shipment">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipment-type">Type</label>
@@ -416,23 +438,37 @@
                                     </span>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row py-1">
-            <div class="mx-auto col-lg-6 mt-lg-2">
-                <!-- form shipper info -->
-                <div class="card">
-                    <div class="card-header" @click="openCard.shipper = ! openCard.shipper" style="cursor: pointer">
-                        <h4 class="mb-0"><i class="fas"
-                                            :class="[openCard.shipper ? 'fa-caret-down' : 'fa-caret-right']"></i>
-                            Shipper</h4>
+            <div class="row py-1">
+                <div class="mx-auto col-lg-6 mt-lg-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group form-row">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="add-shipper"
+                                           v-model="form.data.addShipper">
+                                    <label class="custom-control-label" for="add-shipper">Add shipper details?</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body" v-show="openCard.shipper">
-                        <form class="form" role="form">
+                </div>
+            </div>
+
+            <div class="row py-1" v-if="form.data.addShipper">
+                <div class="mx-auto col-lg-6 mt-lg-2">
+                    <!-- form shipper info -->
+                    <div class="card">
+                        <div class="card-header" @click="openCard.shipper = ! openCard.shipper" style="cursor: pointer">
+                            <h4 class="mb-0"><i class="fas"
+                                                :class="[openCard.shipper ? 'fa-caret-down' : 'fa-caret-right']"></i>
+                                Shipper</h4>
+                        </div>
+                        <div class="card-body" v-show="openCard.shipper">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipper-name">Name</label>
@@ -531,20 +567,20 @@
                                     </span>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row py-1">
-            <div class="mx-auto col-lg-6 mt-lg-2">
-                <div class="form-group row">
-                    <button class="btn btn-primary btn-block" @click.prevent="submitForm()">Submit</button>
+            <div class="row py-1">
+                <div class="mx-auto col-lg-6 mt-lg-2">
+                    <div class="form-group row">
+                        <button class="btn btn-primary btn-block" @click.prevent="submitForm()">Submit</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </form>
     </div>
 </template>
 <script>
@@ -571,9 +607,10 @@
                 openCard: {
                     customer: true,
                     shipment: true,
-                    shipper: false,
+                    shipper: true,
                 },
                 form: new LaravelForm({
+                    addShipper: '',
                     customer: {
                         name: '',
                         mobile: '',
@@ -608,7 +645,7 @@
                         contactName: '',
                         addressLine1: '',
                         addressLine2: '',
-                        city: '',
+                        city: 'shipper city',
                         country: 'Saudi Arabia',
                         phone: '',
                     },
@@ -619,6 +656,7 @@
         methods: {
             submitForm() {
 
+                this.form.data.minimumFields = this.minimumFields;
                 this.message = '';
                 this.showResult = false;
                 let vm = this;
@@ -628,11 +666,14 @@
                     .then(res => {
                         console.log("Res from component", res);
 
-                        vm.form.data = {
-                            customer: {},
-                            shipment: {},
-                            shipper: {},
-                        };
+
+                        if (res.success) {
+                            vm.form.data = {
+                                customer: {},
+                                shipment: {},
+                                shipper: {},
+                            };
+                        }
 
                         vm.result = res;
                         vm.showResult = true;
