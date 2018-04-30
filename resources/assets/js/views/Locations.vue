@@ -156,7 +156,9 @@
                     filteredMarkers.forEach(mark => {
                         bounds.extend(mark.position);
                     });
-                    this.$refs.mapRef.fitBounds(bounds);
+                    if (this.$refs.mapRef) {
+                        this.$refs.mapRef.fitBounds(bounds);
+                    }
                 }
 
                 return filteredMarkers;
@@ -195,9 +197,11 @@
             // At this point, the child GmapMap has been mounted, but
             // its map has not been initialized.
             // Therefore we need to write mapRef.$mapPromise.then(() => ...)
-            this.$refs.mapRef.$mapPromise.then((map) => {
-                map.panTo(this.center)
-            })
+            if (this.$refs.mapRef) {
+                this.$refs.mapRef.$mapPromise.then((map) => {
+                    map.panTo(this.center)
+                })
+            }
         },
 
         watch: {
