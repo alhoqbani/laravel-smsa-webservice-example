@@ -25005,6 +25005,14 @@ var LaravelForm = function () {
             return this.submitForm(request);
         }
     }, {
+        key: 'post',
+        value: function post(url, config) {
+
+            var request = __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, this.data, config);
+
+            return this.submitForm(request);
+        }
+    }, {
         key: 'submitForm',
         value: function submitForm(request) {
             var _this = this;
@@ -50839,6 +50847,229 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -50846,7 +51077,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'CreateShipment',
     data: function data() {
         return {
-            form: new __WEBPACK_IMPORTED_MODULE_0__forms_LaravelForm__["a" /* default */]({})
+            form: new __WEBPACK_IMPORTED_MODULE_0__forms_LaravelForm__["a" /* default */]({
+                customer: {
+                    name: '',
+                    mobile: '',
+                    addressLine1: '',
+                    addressLine2: '',
+                    city: '',
+                    country: '',
+                    zipCode: '',
+                    POBox: '',
+                    tel1: '',
+                    tel2: '',
+                    email: ''
+                },
+                shipment: {
+                    type: 'DLV',
+                    referenceNumber: Math.floor(Date.now() / 1000).toString(),
+                    itemsCount: '',
+                    weight: '',
+                    id: '',
+                    description: '',
+                    sentDate: '',
+                    cashOnDelivery: '',
+                    defaultCurrency: '',
+                    value: '',
+                    customs: '',
+                    insurance: '',
+                    deliveryDate: '',
+                    gpsPoints: ''
+                },
+                shipper: {
+                    name: '',
+                    contactName: '',
+                    addressLine1: '',
+                    addressLine2: '',
+                    city: '',
+                    country: '',
+                    phone: ''
+                }
+            })
         };
     },
 
@@ -50854,6 +51124,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         submitForm: function submitForm() {
             console.log("Submit form");
+
+            this.form.post('/api/shipments').then(function (res) {
+                return console.log("Res from component", res);
+            }).catch(function (err) {
+                return console.log("error from component", err);
+            });
         }
     }
 
@@ -50869,7 +51145,724 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container py-3" }, [
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "mx-auto col-lg-6 mt-lg-2" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", { staticClass: "form", attrs: { role: "form" } }, [
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-name" }
+                  },
+                  [_vm._v("Name")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.name,
+                        expression: "form.data.customer.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.name")
+                    },
+                    attrs: { type: "text", id: "customer-name", required: "" },
+                    domProps: { value: _vm.form.data.customer.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "name",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.name"),
+                          expression: "form.errors.has('customer.name')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.name")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-mobile" }
+                  },
+                  [_vm._v("Mobile")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.mobile,
+                        expression: "form.data.customer.mobile"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.mobile")
+                    },
+                    attrs: {
+                      type: "text",
+                      id: "customer-mobile",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.data.customer.mobile },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "mobile",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.mobile"),
+                          expression: "form.errors.has('customer.mobile')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.mobile")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-address-1" }
+                  },
+                  [_vm._v("Address\n                                Line 1")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.addressLine1,
+                        expression: "form.data.customer.addressLine1"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.addressLine1")
+                    },
+                    attrs: {
+                      type: "text",
+                      id: "customer-address-1",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.data.customer.addressLine1 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "addressLine1",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.addressLine1"),
+                          expression: "form.errors.has('customer.addressLine1')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.addressLine1")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-address-2" }
+                  },
+                  [_vm._v("Address\n                                Line 2")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.addressLine2,
+                        expression: "form.data.customer.addressLine2"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.addressLine2")
+                    },
+                    attrs: {
+                      type: "text",
+                      id: "customer-address-2",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.data.customer.addressLine2 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "addressLine2",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.addressLine2"),
+                          expression: "form.errors.has('customer.addressLine2')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.addressLine2")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-city" }
+                  },
+                  [_vm._v("City")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.city,
+                        expression: "form.data.customer.city"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.city")
+                    },
+                    attrs: { type: "text", id: "customer-city", required: "" },
+                    domProps: { value: _vm.form.data.customer.city },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "city",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.city"),
+                          expression: "form.errors.has('customer.city')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.city")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-country" }
+                  },
+                  [_vm._v("Country")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.country,
+                        expression: "form.data.customer.country"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.country")
+                    },
+                    attrs: {
+                      type: "text",
+                      id: "customer-country",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.data.customer.country },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "country",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.country"),
+                          expression: "form.errors.has('customer.country')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.country")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-zip" }
+                  },
+                  [_vm._v("Zip\n                                Code")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.zipCode,
+                        expression: "form.data.customer.zipCode"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.zipCode")
+                    },
+                    attrs: { type: "text", id: "customer-zip" },
+                    domProps: { value: _vm.form.data.customer.zipCode },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "zipCode",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.zipCode"),
+                          expression: "form.errors.has('customer.zipCode')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.zipCode")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-po-box" }
+                  },
+                  [_vm._v("PO\n                                Box")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.POBox,
+                        expression: "form.data.customer.POBox"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.POBox")
+                    },
+                    attrs: { type: "text", id: "customer-po-box" },
+                    domProps: { value: _vm.form.data.customer.POBox },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "POBox",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.POBox"),
+                          expression: "form.errors.has('customer.POBox')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.POBox")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-tel-1" }
+                  },
+                  [_vm._v("Tel\n                                1")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.tel1,
+                        expression: "form.data.customer.tel1"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.tel1")
+                    },
+                    attrs: { type: "text", id: "customer-tel-1" },
+                    domProps: { value: _vm.form.data.customer.tel1 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "tel1",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.tel1"),
+                          expression: "form.errors.has('customer.tel1')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.tel1")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-tel-2" }
+                  },
+                  [_vm._v("Tel\n                                2")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.tel2,
+                        expression: "form.data.customer.tel2"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.tel2")
+                    },
+                    attrs: { type: "text", id: "customer-tel-2" },
+                    domProps: { value: _vm.form.data.customer.tel2 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "tel2",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.tel2"),
+                          expression: "form.errors.has('customer.tel2')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.tel2")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "customer-email" }
+                  },
+                  [_vm._v("Email")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.customer.email,
+                        expression: "form.data.customer.email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("customer.email")
+                    },
+                    attrs: { type: "email", id: "customer-email" },
+                    domProps: { value: _vm.form.data.customer.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.customer,
+                          "email",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("customer.email"),
+                          expression: "form.errors.has('customer.email')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("customer.email")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "mx-auto col-lg-6 mt-md-2" }, [
         _c("div", { staticClass: "card" }, [
@@ -50877,31 +51870,855 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("form", { staticClass: "form", attrs: { role: "form" } }, [
-              _vm._m(2),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-type" }
+                  },
+                  [_vm._v("Type")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.data.shipment.type,
+                          expression: "form.data.shipment.type"
+                        }
+                      ],
+                      staticClass: "form-control custom-select",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("shipment.type")
+                      },
+                      attrs: { id: "shipment-type", size: "0", required: "" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form.data.shipment,
+                            "type",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "DLV", selected: "" } }, [
+                        _vm._v("DLV")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "VAL" } }, [
+                        _vm._v("VAL")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "HAL" } }, [
+                        _vm._v("HAL")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "BLT" } }, [_vm._v("BLT")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.type"),
+                          expression: "form.errors.has('shipment.type')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.type")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(3),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-ref" }
+                  },
+                  [_vm._v("Reference\n                                Number")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.referenceNumber,
+                        expression: "form.data.shipment.referenceNumber"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has(
+                        "shipment.referenceNumber"
+                      )
+                    },
+                    attrs: { type: "text", id: "shipment-ref" },
+                    domProps: { value: _vm.form.data.shipment.referenceNumber },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "referenceNumber",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has(
+                            "shipment.referenceNumber"
+                          ),
+                          expression:
+                            "form.errors.has('shipment.referenceNumber')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(
+                          _vm.form.errors.get("shipment.referenceNumber")
+                        ) + "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(4),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-count" }
+                  },
+                  [_vm._v("Items\n                                Count")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.itemsCount,
+                        expression: "form.data.shipment.itemsCount"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.itemsCount")
+                    },
+                    attrs: { type: "text", id: "shipment-count" },
+                    domProps: { value: _vm.form.data.shipment.itemsCount },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "itemsCount",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.itemsCount"),
+                          expression: "form.errors.has('shipment.itemsCount')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.itemsCount")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(5),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-weight" }
+                  },
+                  [_vm._v("Weight")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.weight,
+                        expression: "form.data.shipment.weight"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.weight")
+                    },
+                    attrs: { type: "text", id: "shipment-weight" },
+                    domProps: { value: _vm.form.data.shipment.weight },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "weight",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.weight"),
+                          expression: "form.errors.has('shipment.weight')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.weight")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(6),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-id" }
+                  },
+                  [_vm._v("Id")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.id,
+                        expression: "form.data.shipment.id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: { "is-invalid": _vm.form.errors.has("shipment.id") },
+                    attrs: { type: "text", id: "shipment-id" },
+                    domProps: { value: _vm.form.data.shipment.id },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "id",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.id"),
+                          expression: "form.errors.has('shipment.id')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.id")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(7),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-description" }
+                  },
+                  [_vm._v("Description")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.description,
+                        expression: "form.data.shipment.description"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.description")
+                    },
+                    attrs: { type: "text", id: "shipment-description" },
+                    domProps: { value: _vm.form.data.shipment.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "description",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.description"),
+                          expression: "form.errors.has('shipment.description')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.description")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(8),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-sent-date" }
+                  },
+                  [_vm._v("Sent\n                                Date")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.sentDate,
+                        expression: "form.data.shipment.sentDate"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.sentDate")
+                    },
+                    attrs: { type: "text", id: "shipment-sent-date" },
+                    domProps: { value: _vm.form.data.shipment.sentDate },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "sentDate",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.sentDate"),
+                          expression: "form.errors.has('shipment.sentDate')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.sentDate")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(9),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-cod" }
+                  },
+                  [_vm._v("Cash On\n                                Delivery")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.cashOnDelivery,
+                        expression: "form.data.shipment.cashOnDelivery"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has(
+                        "shipment.cashOnDelivery"
+                      )
+                    },
+                    attrs: { type: "text", id: "shipment-cod" },
+                    domProps: { value: _vm.form.data.shipment.cashOnDelivery },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "cashOnDelivery",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.cashOnDelivery"),
+                          expression:
+                            "form.errors.has('shipment.cashOnDelivery')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.cashOnDelivery")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(10),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-value" }
+                  },
+                  [_vm._v("Value")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.value,
+                        expression: "form.data.shipment.value"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.value")
+                    },
+                    attrs: { type: "text", id: "shipment-value" },
+                    domProps: { value: _vm.form.data.shipment.value },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "value",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.value"),
+                          expression: "form.errors.has('shipment.value')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.value")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(11),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-customs" }
+                  },
+                  [_vm._v("Customs")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.customs,
+                        expression: "form.data.shipment.customs"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.customs")
+                    },
+                    attrs: { type: "text", id: "shipment-customs" },
+                    domProps: { value: _vm.form.data.shipment.customs },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "customs",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.customs"),
+                          expression: "form.errors.has('shipment.customs')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.customs")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(12),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-insurance" }
+                  },
+                  [_vm._v("Insurance")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.insurance,
+                        expression: "form.data.shipment.insurance"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.insurance")
+                    },
+                    attrs: { type: "text", id: "shipment-insurance" },
+                    domProps: { value: _vm.form.data.shipment.insurance },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "insurance",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.insurance"),
+                          expression: "form.errors.has('shipment.insurance')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.insurance")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(13),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-delivery-date" }
+                  },
+                  [_vm._v("Delivery\n                                Date")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.deliveryDate,
+                        expression: "form.data.shipment.deliveryDate"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.deliveryDate")
+                    },
+                    attrs: { type: "text", id: "shipment-delivery-date" },
+                    domProps: { value: _vm.form.data.shipment.deliveryDate },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "deliveryDate",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.deliveryDate"),
+                          expression: "form.errors.has('shipment.deliveryDate')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.deliveryDate")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(14),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipment-gps" }
+                  },
+                  [_vm._v("GPS\n                                Points")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipment.gpsPoints,
+                        expression: "form.data.shipment.gpsPoints"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipment.gpsPoints")
+                    },
+                    attrs: { type: "text", id: "shipment-gps" },
+                    domProps: { value: _vm.form.data.shipment.gpsPoints },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipment,
+                          "gpsPoints",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipment.gpsPoints"),
+                          expression: "form.errors.has('shipment.gpsPoints')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipment.gpsPoints")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group row" }, [
                 _c("label", {
@@ -50929,7 +52746,456 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(15)
+      _c("div", { staticClass: "mx-auto col-lg-6 mt-lg-2" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", { staticClass: "form", attrs: { role: "form" } }, [
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipper-name" }
+                  },
+                  [_vm._v("Name")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipper.name,
+                        expression: "form.data.shipper.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipper.name")
+                    },
+                    attrs: { type: "text", id: "shipper-name" },
+                    domProps: { value: _vm.form.data.shipper.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipper,
+                          "name",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipper.name"),
+                          expression: "form.errors.has('shipper.name')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipper.name")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipper-contact-name" }
+                  },
+                  [_vm._v("Contact\n                                Name")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipper.contactName,
+                        expression: "form.data.shipper.contactName"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipper.contactName")
+                    },
+                    attrs: { type: "text", id: "shipper-contact-name" },
+                    domProps: { value: _vm.form.data.shipper.contactName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipper,
+                          "contactName",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipper.contactName"),
+                          expression: "form.errors.has('shipper.contactName')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipper.contactName")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipper-address-1" }
+                  },
+                  [_vm._v("Address\n                                Line 1")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipper.addressLine1,
+                        expression: "form.data.shipper.addressLine1"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipper.addressLine1")
+                    },
+                    attrs: { type: "text", id: "shipper-address-1" },
+                    domProps: { value: _vm.form.data.shipper.addressLine1 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipper,
+                          "addressLine1",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipper.addressLine1"),
+                          expression: "form.errors.has('shipper.addressLine1')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipper.addressLine1")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipper-address-2" }
+                  },
+                  [_vm._v("Address\n                                Line 2")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipper.addressLine2,
+                        expression: "form.data.shipper.addressLine2"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipper.addressLine2")
+                    },
+                    attrs: { type: "text", id: "shipper-address-2" },
+                    domProps: { value: _vm.form.data.shipper.addressLine2 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipper,
+                          "addressLine2",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipper.addressLine2"),
+                          expression: "form.errors.has('shipper.addressLine2')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipper.addressLine2")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipper-city" }
+                  },
+                  [_vm._v("City")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipper.city,
+                        expression: "form.data.shipper.city"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipper.city")
+                    },
+                    attrs: { type: "text", id: "shipper-city" },
+                    domProps: { value: _vm.form.data.shipper.city },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipper,
+                          "city",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipper.city"),
+                          expression: "form.errors.has('shipper.city')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipper.city")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipper-country" }
+                  },
+                  [_vm._v("Country")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipper.country,
+                        expression: "form.data.shipper.country"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipper.country")
+                    },
+                    attrs: { type: "text", id: "shipper-country" },
+                    domProps: { value: _vm.form.data.shipper.country },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipper,
+                          "country",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipper.country"),
+                          expression: "form.errors.has('shipper.country')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipper.country")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-3 col-form-label form-control-label",
+                    attrs: { for: "shipper-phone" }
+                  },
+                  [_vm._v("Phone")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.data.shipper.phone,
+                        expression: "form.data.shipper.phone"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("shipper.phone")
+                    },
+                    attrs: { type: "tel", id: "shipper-phone" },
+                    domProps: { value: _vm.form.data.shipper.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form.data.shipper,
+                          "phone",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.form.errors.has("shipper.phone"),
+                          expression: "form.errors.has('shipper.phone')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.form.errors.get("shipper.phone")) +
+                          "\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -50938,215 +53204,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mx-auto col-lg-6 mt-lg-2" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("h4", { staticClass: "mb-0" }, [_vm._v("Customer")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("form", { staticClass: "form", attrs: { role: "form" } }, [
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-name" }
-                },
-                [_vm._v("Name")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "customer-name" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "col-lg-3 col-form-label form-control-label required",
-                  attrs: { for: "customer-mobile" }
-                },
-                [_vm._v("Mobile")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "customer-mobile", required: "" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-address-1" }
-                },
-                [_vm._v("Address\n                                Line 1")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "email", id: "customer-address-1" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-address-2" }
-                },
-                [_vm._v("Address\n                                Line 2")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "customer-address-2" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-city" }
-                },
-                [_vm._v("City")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "customer-city" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-country" }
-                },
-                [_vm._v("Country")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "customer-country" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-zip" }
-                },
-                [_vm._v("Zip\n                                Code")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "customer-zip" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-po-box" }
-                },
-                [_vm._v("PO\n                                Box")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "customer-po-box" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-tel-1" }
-                },
-                [_vm._v("Tel\n                                1")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "customer-tel-1" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-tel-2" }
-                },
-                [_vm._v("Tel\n                                2")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "customer-tel-2" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "customer-email" }
-                },
-                [_vm._v("Email")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "customer-email" }
-                })
-              ])
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Customer")])
     ])
   },
   function() {
@@ -51161,442 +53220,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-type" }
-        },
-        [_vm._v("Type")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-control custom-select",
-            attrs: { id: "shipment-type", size: "0" }
-          },
-          [
-            _c("option", { attrs: { value: "DLV", selected: "" } }, [
-              _vm._v("DLV")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "VAL" } }, [_vm._v("VAL")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "HAL" } }, [_vm._v("HAL")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "BLT" } }, [_vm._v("BLT")])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-ref" }
-        },
-        [_vm._v("Reference\n                                Number")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "shipment-ref" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-count" }
-        },
-        [_vm._v("Items\n                                Count")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "email", id: "shipment-count" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-weight" }
-        },
-        [_vm._v("Weight")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "shipment-weight" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-id" }
-        },
-        [_vm._v("Id")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-id" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-description" }
-        },
-        [_vm._v("Description")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-description" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-sent-date" }
-        },
-        [_vm._v("Sent\n                                Date")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-sent-date" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-cod" }
-        },
-        [_vm._v("Cash On\n                                Delivery")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-cod" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-value" }
-        },
-        [_vm._v("Value")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-value" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-customs" }
-        },
-        [_vm._v("Customs")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-customs" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-insurance" }
-        },
-        [_vm._v("Insurance")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-insurance" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-delivery-date" }
-        },
-        [_vm._v("Delivery\n                                Date")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-delivery-date" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-lg-3 col-form-label form-control-label",
-          attrs: { for: "shipment-gps" }
-        },
-        [_vm._v("GPS\n                                Points")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "url", id: "shipment-gps" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mx-auto col-lg-6 mt-lg-2" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("h4", { staticClass: "mb-0" }, [_vm._v("Shipper")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("form", { staticClass: "form", attrs: { role: "form" } }, [
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "shipper-name" }
-                },
-                [_vm._v("Name")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "shipper-name" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "shipper-contact-name" }
-                },
-                [_vm._v("Contact\n                                Name")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "shipper-contact-name" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "shipper-address-1" }
-                },
-                [_vm._v("Address\n                                Line 1")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "email", id: "shipper-address-1" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "shipper-address-2" }
-                },
-                [_vm._v("Address\n                                Line 2")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "shipper-address-2" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "shipper-city" }
-                },
-                [_vm._v("City")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "shipper-city" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "shipper-country" }
-                },
-                [_vm._v("Country")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "shipper-country" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-lg-3 col-form-label form-control-label",
-                  attrs: { for: "shipper-phone" }
-                },
-                [_vm._v("Phone")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-9" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "url", id: "shipper-phone" }
-                })
-              ])
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Shipper")])
     ])
   }
 ]

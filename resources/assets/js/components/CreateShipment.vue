@@ -14,77 +14,160 @@
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="customer-name">Name</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="customer-name">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.name')}"
+                                           type="text"
+                                           id="customer-name"
+                                           required
+                                           v-model="form.data.customer.name">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.name')">{{ form.errors.get('customer.name') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label form-control-label required"
+                                <label class="col-lg-3 col-form-label form-control-label"
                                        for="customer-mobile">Mobile</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="customer-mobile" required>
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.mobile')}"
+                                           type="text"
+                                           id="customer-mobile"
+                                           required
+                                           v-model="form.data.customer.mobile">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.mobile')">{{ form.errors.get('customer.mobile') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-address-1">Address
                                     Line 1</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="email" id="customer-address-1">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.addressLine1')}"
+                                           type="text"
+                                           id="customer-address-1"
+                                           required
+                                           v-model="form.data.customer.addressLine1">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.addressLine1')">{{ form.errors.get('customer.addressLine1') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-address-2">Address
                                     Line 2</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="customer-address-2">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.addressLine2')}"
+                                           type="text"
+                                           id="customer-address-2"
+                                           required
+                                           v-model="form.data.customer.addressLine2">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.addressLine2')">{{ form.errors.get('customer.addressLine2') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="customer-city">City</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="customer-city">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.city')}"
+                                           type="text"
+                                           id="customer-city"
+                                           required
+                                           v-model="form.data.customer.city">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.city')">{{ form.errors.get('customer.city') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="customer-country">Country</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="customer-country">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.country')}"
+                                           type="text"
+                                           id="customer-country"
+                                           required
+                                           v-model="form.data.customer.country">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.country')">{{ form.errors.get('customer.country') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-zip">Zip
                                     Code</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="customer-zip">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.zipCode')}"
+                                           type="text"
+                                           id="customer-zip"
+                                           v-model="form.data.customer.zipCode">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.zipCode')">{{ form.errors.get('customer.zipCode') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-po-box">PO
                                     Box</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="customer-po-box">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.POBox')}"
+                                           type="text"
+                                           id="customer-po-box"
+                                           v-model="form.data.customer.POBox">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.POBox')">{{ form.errors.get('customer.POBox') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-tel-1">Tel
                                     1</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="customer-tel-1">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.tel1')}"
+                                           type="text"
+                                           id="customer-tel-1"
+                                           v-model="form.data.customer.tel1">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.tel1')">{{ form.errors.get('customer.tel1') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-tel-2">Tel
                                     2</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="customer-tel-2">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.tel2')}"
+                                           type="text"
+                                           id="customer-tel-2"
+                                           v-model="form.data.customer.tel2">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.tel2')">{{ form.errors.get('customer.tel2') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="customer-email">Email</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="customer-email">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('customer.email')}"
+                                           type="email"
+                                           id="customer-email"
+                                           v-model="form.data.customer.email">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('customer.email')">{{ form.errors.get('customer.email') }}
+                                    </span>
                                 </div>
                             </div>
                         </form>
@@ -104,93 +187,184 @@
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipment-type">Type</label>
                                 <div class="col-lg-9">
-                                    <select id="shipment-type" class="form-control custom-select" size="0">
+                                    <select id="shipment-type" size="0"
+                                            class="form-control custom-select"
+                                            :class="{'is-invalid': form.errors.has('shipment.type')}"
+                                            required
+                                            v-model="form.data.shipment.type">
                                         <option value="DLV" selected>DLV</option>
                                         <option value="VAL">VAL</option>
                                         <option value="HAL">HAL</option>
                                         <option value="BLT">BLT</option>
                                     </select>
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.type')">{{ form.errors.get('shipment.type') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-ref">Reference
                                     Number</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="shipment-ref">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.referenceNumber')}"
+                                           type="text"
+                                           id="shipment-ref"
+                                           v-model="form.data.shipment.referenceNumber">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.referenceNumber')">{{ form.errors.get('shipment.referenceNumber') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-count">Items
                                     Count</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="email" id="shipment-count">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.itemsCount')}"
+                                           type="text"
+                                           id="shipment-count"
+                                           v-model="form.data.shipment.itemsCount">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.itemsCount')">{{ form.errors.get('shipment.itemsCount') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipment-weight">Weight</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="shipment-weight">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.weight')}"
+                                           type="text"
+                                           id="shipment-weight"
+                                           v-model="form.data.shipment.weight">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.weight')">{{ form.errors.get('shipment.weight') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-id">Id</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-id">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.id')}"
+                                           type="text"
+                                           id="shipment-id"
+                                           v-model="form.data.shipment.id">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.id')">{{ form.errors.get('shipment.id') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-description">Description</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-description">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.description')}"
+                                           type="text"
+                                           id="shipment-description"
+                                           v-model="form.data.shipment.description">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.description')">{{ form.errors.get('shipment.description') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-sent-date">Sent
                                     Date</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-sent-date">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.sentDate')}"
+                                           type="text"
+                                           id="shipment-sent-date"
+                                           v-model="form.data.shipment.sentDate">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.sentDate')">{{ form.errors.get('shipment.sentDate') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-cod">Cash On
                                     Delivery</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-cod">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.cashOnDelivery')}"
+                                           type="text"
+                                           id="shipment-cod"
+                                           v-model="form.data.shipment.cashOnDelivery">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.cashOnDelivery')">{{ form.errors.get('shipment.cashOnDelivery') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipment-value">Value</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-value">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.value')}"
+                                           type="text"
+                                           id="shipment-value"
+                                           v-model="form.data.shipment.value">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.value')">{{ form.errors.get('shipment.value') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipment-customs">Customs</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-customs">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.customs')}"
+                                           type="text"
+                                           id="shipment-customs"
+                                           v-model="form.data.shipment.customs">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.customs')">{{ form.errors.get('shipment.customs') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-insurance">Insurance</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-insurance">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.insurance')}"
+                                           type="text"
+                                           id="shipment-insurance"
+                                           v-model="form.data.shipment.insurance">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.insurance')">{{ form.errors.get('shipment.insurance') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-delivery-date">Delivery
                                     Date</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-delivery-date">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.deliveryDate')}"
+                                           type="text"
+                                           id="shipment-delivery-date"
+                                           v-model="form.data.shipment.deliveryDate">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.deliveryDate')">{{ form.errors.get('shipment.deliveryDate') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-gps">GPS
                                     Points</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipment-gps">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.gpsPoints')}"
+                                           type="text"
+                                           id="shipment-gps"
+                                           v-model="form.data.shipment.gpsPoints">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.gpsPoints')">{{ form.errors.get('shipment.gpsPoints') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -216,49 +390,98 @@
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipper-name">Name</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="shipper-name">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipper.name')}"
+                                           type="text"
+                                           id="shipper-name"
+                                           v-model="form.data.shipper.name">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipper.name')">{{ form.errors.get('shipper.name') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipper-contact-name">Contact
                                     Name</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="shipper-contact-name">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipper.contactName')}"
+                                           type="text"
+                                           id="shipper-contact-name"
+                                           v-model="form.data.shipper.contactName">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipper.contactName')">{{ form.errors.get('shipper.contactName') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipper-address-1">Address
                                     Line 1</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="email" id="shipper-address-1">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipper.addressLine1')}"
+                                           type="text"
+                                           id="shipper-address-1"
+                                           v-model="form.data.shipper.addressLine1">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipper.addressLine1')">{{ form.errors.get('shipper.addressLine1') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipper-address-2">Address
                                     Line 2</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="shipper-address-2">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipper.addressLine2')}"
+                                           type="text"
+                                           id="shipper-address-2"
+                                           v-model="form.data.shipper.addressLine2">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipper.addressLine2')">{{ form.errors.get('shipper.addressLine2') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipper-city">City</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipper-city">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipper.city')}"
+                                           type="text"
+                                           id="shipper-city"
+                                           v-model="form.data.shipper.city">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipper.city')">{{ form.errors.get('shipper.city') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipper-country">Country</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipper-country">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipper.country')}"
+                                           type="text"
+                                           id="shipper-country"
+                                           v-model="form.data.shipper.country">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipper.country')">{{ form.errors.get('shipper.country') }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipper-phone">Phone</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="url" id="shipper-phone">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipper.phone')}"
+                                           type="tel"
+                                           id="shipper-phone"
+                                           v-model="form.data.shipper.phone">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipper.phone')">{{ form.errors.get('shipper.phone') }}
+                                    </span>
                                 </div>
                             </div>
                         </form>
@@ -276,14 +499,56 @@
         data() {
             return {
                 form: new LaravelForm({
-
+                    customer: {
+                        name: '',
+                        mobile: '',
+                        addressLine1: '',
+                        addressLine2: '',
+                        city: '',
+                        country: '',
+                        zipCode: '',
+                        POBox: '',
+                        tel1: '',
+                        tel2: '',
+                        email: '',
+                    },
+                    shipment: {
+                        type: 'DLV',
+                        referenceNumber: Math.floor(Date.now() / 1000).toString(),
+                        itemsCount: '',
+                        weight: '',
+                        id: '',
+                        description: '',
+                        sentDate: '',
+                        cashOnDelivery: '',
+                        defaultCurrency: '',
+                        value: '',
+                        customs: '',
+                        insurance: '',
+                        deliveryDate: '',
+                        gpsPoints: '',
+                    },
+                    shipper: {
+                        name: '',
+                        contactName: '',
+                        addressLine1: '',
+                        addressLine2: '',
+                        city: '',
+                        country: '',
+                        phone: '',
+                    },
                 }),
             }
         },
 
         methods: {
             submitForm() {
-                console.log("Submit form")
+                console.log("Submit form");
+
+                this.form.post('/api/shipments')
+                    .then(res => console.log("Res from component", res))
+                    .catch(err => console.log("error from component", err))
+
             }
         }
 

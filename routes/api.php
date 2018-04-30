@@ -26,4 +26,7 @@ $router->group(['middleware' => 'auth:api'], function (Router $router) {
 
     $router->get('tracking/track', 'Api\TrackingController@track');
 
+    // Shipments
+    $router->post('shipments', 'Api\ShipmentsController@store');
+
 });

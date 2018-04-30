@@ -43,6 +43,13 @@ class LaravelForm {
         return this.submitForm(request);
     }
 
+    post(url, config) {
+
+        let request = axois.post(url, this.data, config);
+
+        return this.submitForm(request);
+    }
+
     submitForm(request) {
 
         return new Promise((resolve, reject) => {
