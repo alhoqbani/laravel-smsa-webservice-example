@@ -50577,6 +50577,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__forms_LaravelForm__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ResultModal__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ResultModal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_ResultModal__);
 //
 //
 //
@@ -51102,15 +51104,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'CreateShipment',
+    components: { ResultModal: __WEBPACK_IMPORTED_MODULE_1__components_ResultModal___default.a },
     data: function data() {
         return {
             minimumFields: true,
             message: '',
+            showResult: false,
+            result: {
+                success: '',
+                data: '',
+                error: '',
+                type: '',
+                payload: {},
+                request: '',
+                response: ''
+            },
             openCard: {
                 customer: true,
                 shipment: true,
@@ -51164,6 +51201,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submitForm: function submitForm() {
 
             this.message = '';
+            this.showResult = false;
             var vm = this;
 
             this.form.post('/api/shipments').then(function (res) {
@@ -51175,7 +51213,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     shipper: {}
                 };
 
-                vm.message = res.data;
+                vm.result = res;
+                vm.showResult = true;
             }).catch(function (response) {
                 vm.message = response.data.message;
                 console.log("error from component", response);
@@ -51289,7 +51328,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "alert alert-dismissible fade show",
+                staticClass: "alert fade show",
                 class: [this.form.successful ? "alert-info" : "alert-danger"]
               },
               [
@@ -51309,6 +51348,55 @@ var render = function() {
                   "\n                " + _vm._s(_vm.message) + "\n            "
                 )
               ]
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showResult
+      ? _c("div", { staticClass: "row justify-content-center" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c(
+              "div",
+              { staticClass: "alert fade show alert-primary" },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "alert",
+                      "aria-label": "Close"
+                    }
+                  },
+                  [_vm._v("x")]
+                ),
+                _vm._v(" "),
+                _c("h4", { staticClass: "alert-heading" }, [
+                  _vm._v("Shipment created successfully.")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex justify-content-between" }, [
+                  _c("p", [_vm._v("AWB: " + _vm._s(_vm.result.data))]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-dark align-self-end",
+                      attrs: {
+                        type: "button",
+                        "data-toggle": "modal",
+                        "data-target": "#resultModal"
+                      }
+                    },
+                    [_vm._v("Full Result\n                    ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("ResultModal", { attrs: { result: _vm.result } })
+              ],
+              1
             )
           ])
         ])
@@ -51335,7 +51423,7 @@ var render = function() {
                     _vm.openCard.customer ? "fa-caret-down" : "fa-caret-right"
                   ]
                 }),
-                _vm._v(" Customer")
+                _vm._v("\n                        Customer")
               ])
             ]
           ),
@@ -52135,7 +52223,7 @@ var render = function() {
                     _vm.openCard.shipment ? "fa-caret-down" : "fa-caret-right"
                   ]
                 }),
-                _vm._v(" Shipment")
+                _vm._v("\n                        Shipment")
               ])
             ]
           ),
@@ -53192,7 +53280,7 @@ var render = function() {
                     _vm.openCard.shipper ? "fa-caret-down" : "fa-caret-right"
                   ]
                 }),
-                _vm._v(" Shipper")
+                _vm._v("\n                        Shipper")
               ])
             ]
           ),
@@ -54711,6 +54799,318 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(79)
+/* template */
+var __vue_template__ = __webpack_require__(80)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ResultModal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5f610fae", Component.options)
+  } else {
+    hotAPI.reload("data-v-5f610fae", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['result']
+});
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "resultModal",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "resultModalLabel",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "container-fluid" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("p", [
+                      _c("strong", [_vm._v("Success:")]),
+                      _vm._v(
+                        " " + _vm._s(JSON.stringify(_vm.result.success)) + " "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("p", [
+                      _c("strong", [_vm._v("Data:")]),
+                      _vm._v(" " + _vm._s(_vm.result.data))
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("p", [
+                      _c("strong", [_vm._v("Error:")]),
+                      _vm._v(" " + _vm._s(JSON.stringify(_vm.result.error)))
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("p", [
+                      _c("strong", [_vm._v("Type:")]),
+                      _vm._v(
+                        " " +
+                          _vm._s(_vm.result.type) +
+                          " - (The SOAP operation used\n                                with SMSA Api)"
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Payload:")]),
+                    _vm._v(" "),
+                    _c(
+                      "dl",
+                      { staticClass: "row" },
+                      [
+                        _vm._l(_vm.result.payload, function(value, key) {
+                          return [
+                            _c("dt", { staticClass: "col-sm-2" }, [
+                              _vm._v(_vm._s(key))
+                            ]),
+                            _vm._v(" "),
+                            _c("dd", { staticClass: "col-sm-10" }, [
+                              _vm._v(_vm._s(JSON.stringify(value)))
+                            ])
+                          ]
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Request:")]),
+                    _vm._v(" "),
+                    _c("pre", [_vm._v(_vm._s(_vm.result.request))])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Response:")]),
+                    _vm._v(" "),
+                    _c("pre", [_vm._v(_vm._s(_vm.result.response))])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "resultModalLabel" } },
+        [_vm._v("Response Results")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5f610fae", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -3,10 +3,27 @@
 
         <div class="row justify-content-center" v-if="message && !this.form.busy">
             <div class="col-12">
-                <div class="alert alert-dismissible fade show"
+                <div class="alert fade show"
                      :class="[this.form.successful ? 'alert-info' : 'alert-danger']">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
                     {{ message }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" v-if="showResult">
+            <div class="col-12">
+                <div class="alert fade show alert-primary">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+                    <h4 class="alert-heading">Shipment created successfully.</h4>
+                    <div class="d-flex justify-content-between">
+                        <p>AWB: {{ result.data }}</p>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-dark align-self-end" data-toggle="modal"
+                                data-target="#resultModal">Full Result
+                        </button>
+                    </div>
+                    <ResultModal :result="result"></ResultModal>
                 </div>
             </div>
         </div>
@@ -16,7 +33,9 @@
                 <!-- form customer info -->
                 <div class="card">
                     <div class="card-header" @click="openCard.customer = ! openCard.customer">
-                        <h4 class="mb-0"><i class="fas" :class="[openCard.customer ? 'fa-caret-down' : 'fa-caret-right']"></i> Customer</h4>
+                        <h4 class="mb-0"><i class="fas"
+                                            :class="[openCard.customer ? 'fa-caret-down' : 'fa-caret-right']"></i>
+                            Customer</h4>
                     </div>
                     <div class="card-body" v-show="openCard.customer">
                         <form class="form" role="form">
@@ -192,7 +211,9 @@
                 <!-- form shipment info -->
                 <div class="card">
                     <div class="card-header" @click="openCard.shipment = ! openCard.shipment">
-                        <h4 class="mb-0"><i class="fas" :class="[openCard.shipment ? 'fa-caret-down' : 'fa-caret-right']"></i> Shipment</h4>
+                        <h4 class="mb-0"><i class="fas"
+                                            :class="[openCard.shipment ? 'fa-caret-down' : 'fa-caret-right']"></i>
+                            Shipment</h4>
                     </div>
                     <div class="card-body" v-show="openCard.shipment">
                         <form class="form" role="form">
@@ -405,7 +426,9 @@
                 <!-- form shipper info -->
                 <div class="card">
                     <div class="card-header" @click="openCard.shipper = ! openCard.shipper">
-                        <h4 class="mb-0"><i class="fas" :class="[openCard.shipper ? 'fa-caret-down' : 'fa-caret-right']"></i> Shipper</h4>
+                        <h4 class="mb-0"><i class="fas"
+                                            :class="[openCard.shipper ? 'fa-caret-down' : 'fa-caret-right']"></i>
+                            Shipper</h4>
                     </div>
                     <div class="card-body" v-show="openCard.shipper">
                         <form class="form" role="form">
@@ -525,17 +548,29 @@
 </template>
 <script>
     import LaravelForm from '../forms/LaravelForm';
+    import ResultModal from '../components/ResultModal';
 
     export default {
         name: 'CreateShipment',
+        components: { ResultModal },
         data() {
             return {
                 minimumFields: true,
                 message: '',
+                showResult: false,
+                result: {
+                    success: '',
+                    data: '',
+                    error: '',
+                    type: '',
+                    payload: {},
+                    request: '',
+                    response: '',
+                },
                 openCard: {
-                  customer: true,
-                  shipment: true,
-                  shipper: false,
+                    customer: true,
+                    shipment: true,
+                    shipper: false,
                 },
                 form: new LaravelForm({
                     customer: {
@@ -584,6 +619,7 @@
             submitForm() {
 
                 this.message = '';
+                this.showResult = false;
                 let vm = this;
 
                 this.form.post('/api/shipments')
@@ -597,7 +633,8 @@
                             shipper: {},
                         };
 
-                        vm.message = res.data;
+                        vm.result = res;
+                        vm.showResult = true;
                     })
 
                     .catch(response => {
