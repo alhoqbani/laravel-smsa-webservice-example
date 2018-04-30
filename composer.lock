@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/alhoqbani/smsa-webservice.git",
-                "reference": "eef18d8ff321a22c1c431511008ac59e452f0daf"
+                "reference": "980b78a678957d96de9c9fdf4271d84cd31eb87e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alhoqbani/smsa-webservice/zipball/eef18d8ff321a22c1c431511008ac59e452f0daf",
-                "reference": "eef18d8ff321a22c1c431511008ac59e452f0daf",
+                "url": "https://api.github.com/repos/alhoqbani/smsa-webservice/zipball/980b78a678957d96de9c9fdf4271d84cd31eb87e",
+                "reference": "980b78a678957d96de9c9fdf4271d84cd31eb87e",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "alhoqbani",
                 "smsa-webservice"
             ],
-            "time": "2018-04-30T11:44:38+00:00"
+            "time": "2018-04-30T13:44:51+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
