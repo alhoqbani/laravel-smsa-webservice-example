@@ -41,9 +41,9 @@ class ShipmentsController extends Controller
 
         } catch (SmsaWebServiceException $e) {
 
-            return response()->json([
-                'message' => $e->getMessage()
-            ], 400);
+            return response()->json(
+                $e->smsaResponse->jsonSerialize()
+            , 400);
         }
     }
 

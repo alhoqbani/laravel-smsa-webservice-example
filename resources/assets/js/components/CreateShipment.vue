@@ -13,11 +13,12 @@
 
         <div class="row justify-content-center" v-if="showResult">
             <div class="col-12">
-                <div class="alert fade show alert-primary">
+                <div class="alert fade show alert-primary" :class="[result.success ? 'alert-primary' : 'alert-danger']">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
-                    <h4 class="alert-heading">Shipment created successfully.</h4>
+                    <h4 class="alert-heading" v-if="result.success">Shipment created successfully.</h4>
+                    <h4 class="alert-heading" v-else>Request Failed.</h4>
                     <div class="d-flex justify-content-between">
-                        <p>AWB: {{ result.data }}</p>
+                        <p>{{ result.data || result.error }}</p>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-dark align-self-end" data-toggle="modal"
                                 data-target="#resultModal">Full Result
@@ -32,7 +33,7 @@
             <div class="mx-auto col-lg-6 mt-lg-2">
                 <!-- form customer info -->
                 <div class="card">
-                    <div class="card-header" @click="openCard.customer = ! openCard.customer">
+                    <div class="card-header" @click="openCard.customer = ! openCard.customer" style="cursor: pointer">
                         <h4 class="mb-0"><i class="fas"
                                             :class="[openCard.customer ? 'fa-caret-down' : 'fa-caret-right']"></i>
                             Customer</h4>
@@ -210,7 +211,7 @@
             <div class="mx-auto col-lg-6 mt-md-2">
                 <!-- form shipment info -->
                 <div class="card">
-                    <div class="card-header" @click="openCard.shipment = ! openCard.shipment">
+                    <div class="card-header" @click="openCard.shipment = ! openCard.shipment" style="cursor: pointer">
                         <h4 class="mb-0"><i class="fas"
                                             :class="[openCard.shipment ? 'fa-caret-down' : 'fa-caret-right']"></i>
                             Shipment</h4>
@@ -425,7 +426,7 @@
             <div class="mx-auto col-lg-6 mt-lg-2">
                 <!-- form shipper info -->
                 <div class="card">
-                    <div class="card-header" @click="openCard.shipper = ! openCard.shipper">
+                    <div class="card-header" @click="openCard.shipper = ! openCard.shipper" style="cursor: pointer">
                         <h4 class="mb-0"><i class="fas"
                                             :class="[openCard.shipper ? 'fa-caret-down' : 'fa-caret-right']"></i>
                             Shipper</h4>
@@ -552,7 +553,7 @@
 
     export default {
         name: 'CreateShipment',
-        components: { ResultModal },
+        components: {ResultModal},
         data() {
             return {
                 minimumFields: true,
@@ -638,8 +639,14 @@
                     })
 
                     .catch(response => {
+                        console.log("error response from create shipment component", response);
+                        if (response.status === 400) {
+                            vm.result = response.data;
+                            vm.showResult = true;
+                            return;
+                        }
+
                         vm.message = response.data.message;
-                        console.log("error from component", response)
                     })
 
                     .finally(() => window.scrollTo(0, 0))

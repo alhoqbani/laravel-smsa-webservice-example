@@ -51127,6 +51127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -51216,8 +51217,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 vm.result = res;
                 vm.showResult = true;
             }).catch(function (response) {
+                console.log("error response from create shipment component", response);
+                if (response.status === 400) {
+                    vm.result = response.data;
+                    vm.showResult = true;
+                    return;
+                }
+
                 vm.message = response.data.message;
-                console.log("error from component", response);
             }).finally(function () {
                 return window.scrollTo(0, 0);
             });
@@ -51358,7 +51365,10 @@ var render = function() {
           _c("div", { staticClass: "col-12" }, [
             _c(
               "div",
-              { staticClass: "alert fade show alert-primary" },
+              {
+                staticClass: "alert fade show alert-primary",
+                class: [_vm.result.success ? "alert-primary" : "alert-danger"]
+              },
               [
                 _c(
                   "button",
@@ -51373,12 +51383,18 @@ var render = function() {
                   [_vm._v("x")]
                 ),
                 _vm._v(" "),
-                _c("h4", { staticClass: "alert-heading" }, [
-                  _vm._v("Shipment created successfully.")
-                ]),
+                _vm.result.success
+                  ? _c("h4", { staticClass: "alert-heading" }, [
+                      _vm._v("Shipment created successfully.")
+                    ])
+                  : _c("h4", { staticClass: "alert-heading" }, [
+                      _vm._v("Request Failed.")
+                    ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "d-flex justify-content-between" }, [
-                  _c("p", [_vm._v("AWB: " + _vm._s(_vm.result.data))]),
+                  _c("p", [
+                    _vm._v(_vm._s(_vm.result.data || _vm.result.error))
+                  ]),
                   _vm._v(" "),
                   _c(
                     "button",
@@ -51409,6 +51425,7 @@ var render = function() {
             "div",
             {
               staticClass: "card-header",
+              staticStyle: { cursor: "pointer" },
               on: {
                 click: function($event) {
                   _vm.openCard.customer = !_vm.openCard.customer
@@ -52209,6 +52226,7 @@ var render = function() {
             "div",
             {
               staticClass: "card-header",
+              staticStyle: { cursor: "pointer" },
               on: {
                 click: function($event) {
                   _vm.openCard.shipment = !_vm.openCard.shipment
@@ -53266,6 +53284,7 @@ var render = function() {
             "div",
             {
               staticClass: "card-header",
+              staticStyle: { cursor: "pointer" },
               on: {
                 click: function($event) {
                   _vm.openCard.shipper = !_vm.openCard.shipper
