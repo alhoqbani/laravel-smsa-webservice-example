@@ -24948,7 +24948,7 @@ module.exports = Vue;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Errors__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Errors__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25038,9 +25038,9 @@ var LaravelForm = function () {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(68)
+var __vue_script__ = __webpack_require__(71)
 /* template */
-var __vue_template__ = __webpack_require__(69)
+var __vue_template__ = __webpack_require__(72)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25083,7 +25083,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(70);
+module.exports = __webpack_require__(73);
 
 
 /***/ }),
@@ -47409,11 +47409,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_Tracking___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_Tracking__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Shipments__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Shipments___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_Shipments__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_Status__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_Status__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_Status___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__views_Status__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_Track__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_Track__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_Track___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__views_Track__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_NotFoundComponent__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_NotFoundComponent__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_NotFoundComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_NotFoundComponent__);
 
 
@@ -50426,7 +50426,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(54)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(61)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -50472,7 +50472,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CreateShipment__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CreateShipment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_CreateShipment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_DeleteShipment__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_DeleteShipment__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_DeleteShipment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_DeleteShipment__);
 //
 //
@@ -50568,15 +50568,295 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__forms_LaravelForm__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'CreateShipment',
     data: function data() {
-        return {};
+        return {
+            form: new __WEBPACK_IMPORTED_MODULE_0__forms_LaravelForm__["a" /* default */]({})
+        };
+    },
+
+
+    methods: {
+        submitForm: function submitForm() {
+            console.log("Submit form");
+        }
     }
+
 });
 
 /***/ }),
@@ -50587,9 +50867,739 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Create Shipment")])
+  return _c("div", { staticClass: "container py-3" }, [
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "mx-auto col-lg-6 mt-md-2" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", { staticClass: "form", attrs: { role: "form" } }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _vm._m(7),
+              _vm._v(" "),
+              _vm._m(8),
+              _vm._v(" "),
+              _vm._m(9),
+              _vm._v(" "),
+              _vm._m(10),
+              _vm._v(" "),
+              _vm._m(11),
+              _vm._v(" "),
+              _vm._m(12),
+              _vm._v(" "),
+              _vm._m(13),
+              _vm._v(" "),
+              _vm._m(14),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", {
+                  staticClass: "col-lg-3 col-form-label form-control-label"
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-9" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.submitForm()
+                        }
+                      }
+                    },
+                    [_vm._v("Submit")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(15)
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mx-auto col-lg-6 mt-lg-2" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h4", { staticClass: "mb-0" }, [_vm._v("Customer")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("form", { staticClass: "form", attrs: { role: "form" } }, [
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-name" }
+                },
+                [_vm._v("Name")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "customer-name" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "col-lg-3 col-form-label form-control-label required",
+                  attrs: { for: "customer-mobile" }
+                },
+                [_vm._v("Mobile")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "customer-mobile", required: "" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-address-1" }
+                },
+                [_vm._v("Address\n                                Line 1")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "email", id: "customer-address-1" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-address-2" }
+                },
+                [_vm._v("Address\n                                Line 2")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "customer-address-2" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-city" }
+                },
+                [_vm._v("City")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "customer-city" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-country" }
+                },
+                [_vm._v("Country")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "customer-country" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-zip" }
+                },
+                [_vm._v("Zip\n                                Code")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "customer-zip" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-po-box" }
+                },
+                [_vm._v("PO\n                                Box")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "customer-po-box" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-tel-1" }
+                },
+                [_vm._v("Tel\n                                1")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "customer-tel-1" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-tel-2" }
+                },
+                [_vm._v("Tel\n                                2")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "customer-tel-2" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "customer-email" }
+                },
+                [_vm._v("Email")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "customer-email" }
+                })
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Shipment")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-type" }
+        },
+        [_vm._v("Type")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c(
+          "select",
+          {
+            staticClass: "form-control custom-select",
+            attrs: { id: "shipment-type", size: "0" }
+          },
+          [
+            _c("option", { attrs: { value: "DLV", selected: "" } }, [
+              _vm._v("DLV")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "VAL" } }, [_vm._v("VAL")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "HAL" } }, [_vm._v("HAL")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "BLT" } }, [_vm._v("BLT")])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-ref" }
+        },
+        [_vm._v("Reference\n                                Number")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "shipment-ref" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-count" }
+        },
+        [_vm._v("Items\n                                Count")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "email", id: "shipment-count" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-weight" }
+        },
+        [_vm._v("Weight")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "shipment-weight" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-id" }
+        },
+        [_vm._v("Id")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-id" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-description" }
+        },
+        [_vm._v("Description")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-description" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-sent-date" }
+        },
+        [_vm._v("Sent\n                                Date")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-sent-date" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-cod" }
+        },
+        [_vm._v("Cash On\n                                Delivery")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-cod" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-value" }
+        },
+        [_vm._v("Value")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-value" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-customs" }
+        },
+        [_vm._v("Customs")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-customs" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-insurance" }
+        },
+        [_vm._v("Insurance")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-insurance" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-delivery-date" }
+        },
+        [_vm._v("Delivery\n                                Date")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-delivery-date" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-lg-3 col-form-label form-control-label",
+          attrs: { for: "shipment-gps" }
+        },
+        [_vm._v("GPS\n                                Points")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "url", id: "shipment-gps" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mx-auto col-lg-6 mt-lg-2" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h4", { staticClass: "mb-0" }, [_vm._v("Shipper")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("form", { staticClass: "form", attrs: { role: "form" } }, [
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "shipper-name" }
+                },
+                [_vm._v("Name")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "shipper-name" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "shipper-contact-name" }
+                },
+                [_vm._v("Contact\n                                Name")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "shipper-contact-name" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "shipper-address-1" }
+                },
+                [_vm._v("Address\n                                Line 1")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "email", id: "shipper-address-1" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "shipper-address-2" }
+                },
+                [_vm._v("Address\n                                Line 2")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "shipper-address-2" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "shipper-city" }
+                },
+                [_vm._v("City")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "shipper-city" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "shipper-country" }
+                },
+                [_vm._v("Country")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "shipper-country" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-lg-3 col-form-label form-control-label",
+                  attrs: { for: "shipper-phone" }
+                },
+                [_vm._v("Phone")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-9" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "url", id: "shipper-phone" }
+                })
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -50601,6 +51611,90 @@ if (false) {
 
 /***/ }),
 /* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(59)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DeleteShipment.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-25698bdc", Component.options)
+  } else {
+    hotAPI.reload("data-v-25698bdc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'DeleteShipment',
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("h1", [_vm._v("Delete Shipment")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-25698bdc", module.exports)
+  }
+}
+
+/***/ }),
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50657,15 +51751,15 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(60)
+var __vue_script__ = __webpack_require__(63)
 /* template */
-var __vue_template__ = __webpack_require__(62)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -50704,7 +51798,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50799,7 +51893,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 61 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50886,7 +51980,7 @@ var Errors = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Errors);
 
 /***/ }),
-/* 62 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51048,15 +52142,15 @@ if (false) {
 }
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(64)
+var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(65)
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51095,7 +52189,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51222,7 +52316,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 65 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51414,7 +52508,7 @@ if (false) {
 }
 
 /***/ }),
-/* 66 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -51422,7 +52516,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(67)
+var __vue_template__ = __webpack_require__(70)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51461,7 +52555,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 67 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51481,7 +52575,7 @@ if (false) {
 }
 
 /***/ }),
-/* 68 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51523,7 +52617,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 69 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51601,98 +52695,10 @@ if (false) {
 }
 
 /***/ }),
-/* 70 */
+/* 73 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(76)
-/* template */
-var __vue_template__ = __webpack_require__(77)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DeleteShipment.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-25698bdc", Component.options)
-  } else {
-    hotAPI.reload("data-v-25698bdc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 76 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'DeleteShipment',
-    data: function data() {
-        return {};
-    }
-});
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Delete Shipment")])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-25698bdc", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);
