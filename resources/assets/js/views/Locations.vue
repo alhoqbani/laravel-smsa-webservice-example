@@ -22,9 +22,23 @@
                         <option v-for="route of routes" :value="route">{{route}}</option>
                     </select>
                 </div>
+
+                <div class="input-group mb-3 col-md-4">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="display-map" name="displayMap" class="custom-control-input" value="map"
+                               v-model="displayMode">
+                        <label class="custom-control-label" for="display-map">Map</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="display-list" name="displayList" class="custom-control-input"
+                               value="list" v-model="displayMode">
+                        <label class="custom-control-label" for="display-list">List</label>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="row">
+            <div class="row" v-if="displayMode === 'map'">
 
                 <div class="col-md-8">
                     <GmapMap
@@ -56,13 +70,46 @@
                             <li class="list-group-item">{{selectedRetail.phone}}</li>
                         </ul>
                         <div class="card-body">
-                            <a class="card-link" target="_blank"
-                               :href="'https://www.google.com/maps/search/?api=1&query=' + selectedRetail.gps_point.trim()">Google
-                                Maps</a>
+                            <a :href="'https://www.google.com/maps/search/?api=1&query=' + selectedRetail.gps_point.replace(' ', '')"
+                               class="card-link" target="_blank">Google Maps</a>
                         </div>
                     </div>
                 </div>
 
+            </div>
+
+            <div class="row" v-else>
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Route</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Address AR</th>
+                                <th scope="col">Google Maps</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="mark in filteredMarkers">
+                                <th scope="row">{{ mark.code }}</th>
+                                <td>{{ mark.city }}</td>
+                                <td>{{ mark.route_code }}</td>
+                                <td>{{ mark.address_en }}</td>
+                                <td>{{ mark.address_ar }}</td>
+                                <td>
+                                    <a target="_blank"
+                                       :href="'https://www.google.com/maps/search/?api=1&query=' + mark.gps_point.replace(' ', '')">
+                                        <i class="far fa-map"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -76,6 +123,7 @@
 
         data() {
             return {
+                displayMode: 'map',
                 cities: [],
                 cityFilter: '',
                 routes: [],
@@ -100,10 +148,10 @@
                     this.markers;
 
                 if (this.routeFilter) {
-                   filteredMarkers = this.markers.filter(marker => marker.route_code === this.routeFilter)
+                    filteredMarkers = this.markers.filter(marker => marker.route_code === this.routeFilter)
                 }
 
-                if (this.google !== null) {
+                if (this.displayMode === 'map' && this.google !== null) {
                     let bounds = new this.google.maps.LatLngBounds();
                     filteredMarkers.forEach(mark => {
                         bounds.extend(mark.position);
@@ -138,6 +186,7 @@
                     this.routes.push(retail.route_code)
                 }
                 this.routes.sort();
+                this.markers.sort((a, b) => a.code - b.code);
 
             });
         },
