@@ -39,6 +39,10 @@ git clone https://github.com/alhoqbani/laravel-smsa-webservice-example.git
 cd laravel-smsa-webservice-example
 cp .env.example .env
 
+# Edit .env file:
+## with your SMSAWebservice passKey
+# You need google maps javascript api key, to run the map.
+
 ./vessel start
 ./vessel art migrate --seed
 ```
