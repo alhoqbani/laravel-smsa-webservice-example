@@ -10,13 +10,13 @@
                                      exact>Home
                         </router-link>
                         <router-link class="nav-item nav-link"
-                                     :to="{name: 'locations'}">Locations
+                                     :to="{name: 'shipments'}">Shipments
                         </router-link>
                         <router-link class="nav-item nav-link"
                                      :to="{name: 'track'}">Tracking
                         </router-link>
                         <router-link class="nav-item nav-link"
-                                     :to="{name: 'shipments'}">Shipments
+                                     :to="{name: 'locations'}">Locations
                         </router-link>
                     </nav>
 
