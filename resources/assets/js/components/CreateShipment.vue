@@ -127,12 +127,24 @@
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="customer-city">City</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control"
+                                    <select id="customer-city" size="0"
+                                            class="form-control custom-select"
+                                            :class="{'is-invalid': form.errors.has('customer.city')}"
+                                            required
+                                            v-model="form.data.customer.city">
+                                        <option value="other">Other</option>
+                                        <option value="" selected disabled>Choose a city</option>
+                                        <option v-for="city of cities" :value="city.name">{{city.name}}</option>
+                                    </select>
+
+                                    <input class="form-control mt-1"
                                            :class="{'is-invalid': form.errors.has('customer.city')}"
                                            type="text"
-                                           id="customer-city"
                                            required
-                                           v-model="form.data.customer.city">
+                                           placeholder="customer city"
+                                           v-if="showOtherCity || otherCity"
+                                           v-model="otherCity">
+
                                     <span class="invalid-feedback"
                                           v-show="form.errors.has('customer.city')">{{ form.errors.get('customer.city') }}
                                     </span>
@@ -592,6 +604,7 @@
         components: {ResultModal},
         data() {
             return {
+                cities: window.smsaCities,
                 minimumFields: true,
                 message: '',
                 showResult: false,
@@ -609,6 +622,8 @@
                     shipment: true,
                     shipper: true,
                 },
+                showOtherCity: false,
+                otherCity: '',
                 form: new LaravelForm({
                     addShipper: '',
                     customer: {
@@ -653,8 +668,32 @@
             }
         },
 
+        computed: {
+            city() {
+                return this.form.data.customer.city;
+            }
+        },
+
+        watch: {
+            city(selectedCity) {
+                // If the selected city is not from the cities array, we display other cities input field
+                let city = this.cities.find(city => city.name === selectedCity);
+
+                if (selectedCity === 'other' || city === undefined) {
+                    this.showOtherCity = true;
+                } else {
+                    this.showOtherCity = false;
+                    this.otherCity = null;
+                }
+            }
+        },
+
         methods: {
             submitForm() {
+
+                if (this.showOtherCity) {
+                    this.form.data.customer.city = this.otherCity;
+                }
 
                 this.form.data.minimumFields = this.minimumFields;
                 this.message = '';

@@ -18,6 +18,8 @@
         </div>
     @endif
 
-    <App></App>
+    <App :cities="{{json_encode($cities)}}"
+         :retails="{{json_encode($retails)}}"
+    ></App>
 
 @endsection

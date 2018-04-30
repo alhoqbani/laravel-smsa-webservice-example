@@ -31,6 +31,11 @@
 
 <script>
     export default {
-        name: 'App'
+        props: ['cities', 'retails'],
+        name: 'App',
+        created() {
+            window.smsaCities = this.cities;
+            window.retails = this.retails;
+        }
     }
 </script>
