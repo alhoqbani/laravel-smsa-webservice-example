@@ -1,6 +1,29 @@
 <template>
     <div>
         <div class="container">
+
+            <div class="row">
+                <div class="input-group mb-3 col-md-4">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="city-filter">City</label>
+                    </div>
+                    <select class="custom-select" id="city-filter" @change="filterByCity()" v-model="cityFilter">
+                        <option value="" selected>All Cities</option>
+                        <option v-for="city of cities" :value="city">{{city}}</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3 col-md-4">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="route-filter">Route</label>
+                    </div>
+                    <select class="custom-select" id="route-filter" @change="filterByRoute()" v-model="routeFilter">
+                        <option value="" selected>All Routes</option>
+                        <option v-for="route of routes" :value="route">{{route}}</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="row">
 
                 <div class="col-md-8">
@@ -13,11 +36,10 @@
                         <GmapCluster :zoomOnClick="true">
                             <GmapMarker
                                     :key="index"
-                                    v-for="(marker, index) in markers"
+                                    v-for="(marker, index) in filteredMarkers"
                                     :position="marker.position"
                                     :clickable="true"
-                                    @click="onMarkClick(marker)"
-                            />
+                                    @click="onMarkClick(marker)"/>
                         </GmapCluster>
                     </GmapMap>
                 </div>
@@ -47,12 +69,17 @@
 </template>
 
 <script>
+    import {gmapApi} from 'vue2-google-maps';
+
     export default {
         name: 'Locations',
 
         data() {
             return {
-                cities: window.smsaCities,
+                cities: [],
+                cityFilter: '',
+                routes: [],
+                routeFilter: '',
                 retails: window.smsaRetails,
                 selectedRetail: {},
                 showSelectedRetail: false,
@@ -61,6 +88,30 @@
                     lat: 24.679549,
                     lng: 46.688427
                 }
+            }
+        },
+
+        computed: {
+            google: gmapApi,
+
+            filteredMarkers() {
+                let filteredMarkers = this.cityFilter ?
+                    this.markers.filter(marker => marker.city === this.cityFilter) :
+                    this.markers;
+
+                if (this.routeFilter) {
+                   filteredMarkers = this.markers.filter(marker => marker.route_code === this.routeFilter)
+                }
+
+                if (this.google !== null) {
+                    let bounds = new this.google.maps.LatLngBounds();
+                    filteredMarkers.forEach(mark => {
+                        bounds.extend(mark.position);
+                    });
+                    this.$refs.mapRef.fitBounds(bounds);
+                }
+
+                return filteredMarkers;
             }
         },
 
@@ -75,7 +126,19 @@
                         lng: points[1],
                     },
                     ...retail
-                })
+                });
+
+                // Collect unique cities
+                if (this.cities.indexOf(retail.city) === -1) {
+                    this.cities.push(retail.city)
+                }
+                this.cities.sort();
+
+                if (this.routes.indexOf(retail.route_code) === -1) {
+                    this.routes.push(retail.route_code)
+                }
+                this.routes.sort();
+
             });
         },
 
@@ -83,7 +146,6 @@
             // At this point, the child GmapMap has been mounted, but
             // its map has not been initialized.
             // Therefore we need to write mapRef.$mapPromise.then(() => ...)
-
             this.$refs.mapRef.$mapPromise.then((map) => {
                 map.panTo(this.center)
             })
@@ -91,12 +153,11 @@
 
         watch: {
             center(newValue) {
-
                 this.$refs.mapRef.$mapPromise.then((map) => {
                     map.panTo(newValue)
                 })
-
             }
+
         },
 
         methods: {
@@ -105,8 +166,17 @@
                 this.selectedRetail = marker;
                 this.showSelectedRetail = true;
                 this.center = marker.position
+            },
+
+            filterByCity() {
+                this.routeFilter = '';
+            },
+
+            filterByRoute() {
+                this.cityFilter = '';
             }
-        }
+        },
+
 
     }
 
