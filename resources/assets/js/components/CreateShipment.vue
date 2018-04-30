@@ -660,7 +660,7 @@
                         contactName: '',
                         addressLine1: '',
                         addressLine2: '',
-                        city: 'shipper city',
+                        city: '',
                         country: 'Saudi Arabia',
                         phone: '',
                     },
