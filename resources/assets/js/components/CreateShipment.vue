@@ -1,14 +1,24 @@
 <template>
     <div class="container py-3">
 
-        <div class="row">
+        <div class="row justify-content-center" v-if="message && !this.form.busy">
+            <div class="col-12">
+                <div class="alert alert-dismissible fade show"
+                     :class="[this.form.successful ? 'alert-info' : 'alert-danger']">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+                    {{ message }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row py-1">
             <div class="mx-auto col-lg-6 mt-lg-2">
                 <!-- form customer info -->
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="mb-0">Customer</h4>
+                    <div class="card-header" @click="openCard.customer = ! openCard.customer">
+                        <h4 class="mb-0"><i class="fas" :class="[openCard.customer ? 'fa-caret-down' : 'fa-caret-right']"></i> Customer</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" v-show="openCard.customer">
                         <form class="form" role="form">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
@@ -55,7 +65,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-address-2">Address
                                     Line 2</label>
                                 <div class="col-lg-9">
@@ -100,7 +110,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-zip">Zip
                                     Code</label>
                                 <div class="col-lg-9">
@@ -114,7 +124,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-po-box">PO
                                     Box</label>
                                 <div class="col-lg-9">
@@ -128,7 +138,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-tel-1">Tel
                                     1</label>
                                 <div class="col-lg-9">
@@ -142,7 +152,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="customer-tel-2">Tel
                                     2</label>
                                 <div class="col-lg-9">
@@ -156,7 +166,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="customer-email">Email</label>
                                 <div class="col-lg-9">
@@ -175,13 +185,16 @@
                 </div>
                 <!-- /form user info -->
             </div>
+        </div>
+
+        <div class="row py-1">
             <div class="mx-auto col-lg-6 mt-md-2">
                 <!-- form shipment info -->
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="mb-0">Shipment</h4>
+                    <div class="card-header" @click="openCard.shipment = ! openCard.shipment">
+                        <h4 class="mb-0"><i class="fas" :class="[openCard.shipment ? 'fa-caret-down' : 'fa-caret-right']"></i> Shipment</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" v-show="openCard.shipment">
                         <form class="form" role="form">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
@@ -244,7 +257,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-id">Id</label>
                                 <div class="col-lg-9">
                                     <input class="form-control"
@@ -257,7 +270,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-description">Description</label>
                                 <div class="col-lg-9">
                                     <input class="form-control"
@@ -270,7 +283,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-sent-date">Sent
                                     Date</label>
                                 <div class="col-lg-9">
@@ -284,7 +297,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-cod">Cash On
                                     Delivery</label>
                                 <div class="col-lg-9">
@@ -298,7 +311,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipment-value">Value</label>
                                 <div class="col-lg-9">
@@ -312,7 +325,21 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
+                                <label class="col-lg-3 col-form-label form-control-label"
+                                       for="shipment-currency">Currency</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control"
+                                           :class="{'is-invalid': form.errors.has('shipment.defaultCurrency')}"
+                                           type="text"
+                                           id="shipment-currency"
+                                           v-model="form.data.shipment.defaultCurrency">
+                                    <span class="invalid-feedback"
+                                          v-show="form.errors.has('shipment.defaultCurrency')">{{ form.errors.get('shipment.defaultCurrency') }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label"
                                        for="shipment-customs">Customs</label>
                                 <div class="col-lg-9">
@@ -326,7 +353,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-insurance">Insurance</label>
                                 <div class="col-lg-9">
                                     <input class="form-control"
@@ -339,7 +366,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-delivery-date">Delivery
                                     Date</label>
                                 <div class="col-lg-9">
@@ -353,7 +380,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipment-gps">GPS
                                     Points</label>
                                 <div class="col-lg-9">
@@ -367,24 +394,20 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label form-control-label"></label>
-                                <div class="col-lg-9">
-                                    <button class="btn btn-primary" @click.prevent="submitForm()">Submit</button>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="row py-1">
             <div class="mx-auto col-lg-6 mt-lg-2">
                 <!-- form shipper info -->
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="mb-0">Shipper</h4>
+                    <div class="card-header" @click="openCard.shipper = ! openCard.shipper">
+                        <h4 class="mb-0"><i class="fas" :class="[openCard.shipper ? 'fa-caret-down' : 'fa-caret-right']"></i> Shipper</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" v-show="openCard.shipper">
                         <form class="form" role="form">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"
@@ -428,7 +451,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" v-if=" ! minimumFields">
                                 <label class="col-lg-3 col-form-label form-control-label" for="shipper-address-2">Address
                                     Line 2</label>
                                 <div class="col-lg-9">
@@ -489,6 +512,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="row py-1">
+            <div class="mx-auto col-lg-6 mt-lg-2">
+                <div class="form-group row">
+                    <button class="btn btn-primary btn-block" @click.prevent="submitForm()">Submit</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 <script>
@@ -498,6 +530,13 @@
         name: 'CreateShipment',
         data() {
             return {
+                minimumFields: true,
+                message: '',
+                openCard: {
+                  customer: true,
+                  shipment: true,
+                  shipper: false,
+                },
                 form: new LaravelForm({
                     customer: {
                         name: '',
@@ -505,7 +544,7 @@
                         addressLine1: '',
                         addressLine2: '',
                         city: '',
-                        country: '',
+                        country: 'Saudi Arabia',
                         zipCode: '',
                         POBox: '',
                         tel1: '',
@@ -534,7 +573,7 @@
                         addressLine1: '',
                         addressLine2: '',
                         city: '',
-                        country: '',
+                        country: 'Saudi Arabia',
                         phone: '',
                     },
                 }),
@@ -543,12 +582,30 @@
 
         methods: {
             submitForm() {
-                console.log("Submit form");
+
+                this.message = '';
+                let vm = this;
 
                 this.form.post('/api/shipments')
-                    .then(res => console.log("Res from component", res))
-                    .catch(err => console.log("error from component", err))
 
+                    .then(res => {
+                        console.log("Res from component", res);
+
+                        vm.form.data = {
+                            customer: {},
+                            shipment: {},
+                            shipper: {},
+                        };
+
+                        vm.message = res.data;
+                    })
+
+                    .catch(response => {
+                        vm.message = response.data.message;
+                        console.log("error from component", response)
+                    })
+
+                    .finally(() => window.scrollTo(0, 0))
             }
         }
 

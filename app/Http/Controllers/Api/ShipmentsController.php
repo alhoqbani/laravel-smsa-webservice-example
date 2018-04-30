@@ -2,54 +2,49 @@
 
 namespace App\Http\Controllers\Api;
 
+use Alhoqbani\SmsaWebService\Exceptions\SmsaWebServiceException;
+use Alhoqbani\SmsaWebService\Models\Customer;
+use Alhoqbani\SmsaWebService\Models\Shipment;
+use Alhoqbani\SmsaWebService\Smsa;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\StoreShipmentRequest;
 
 class ShipmentsController extends Controller
 {
 
 
-    public function store(Request $request)
+    public function store(StoreShipmentRequest $request, Smsa $smsa)
     {
-        $this->validate($request, [
-            'customer.name'         => ['required'],
-            'customer.mobile'       => ['required'],
-            'customer.addressLine1' => ['required'],
-            'customer.addressLine2' => ['required'],
-            'customer.city'         => ['required'],
-            'customer.country'      => ['required'],
-            'customer.zipCode'      => ['required'],
-            'customer.POBox'        => ['required'],
-            'customer.tel1'         => ['required'],
-            'customer.tel2'         => ['required'],
-            'customer.email'        => ['required'],
+        $data = $request->validated();
 
-            'shipment.type'            => ['required'],
-            'shipment.referenceNumber' => ['required'],
-            'shipment.itemsCount'      => ['required'],
-            'shipment.weight'          => ['required'],
-            'shipment.id'              => ['required'],
-            'shipment.description'     => ['required'],
-            'shipment.sentDate'        => ['required'],
-            'shipment.cashOnDelivery'  => ['required'],
-            'shipment.defaultCurrency' => ['required'],
-            'shipment.value'           => ['required'],
-            'shipment.customs'         => ['required'],
-            'shipment.insurance'       => ['required'],
-            'shipment.deliveryDate'    => ['required'],
-            'shipment.gpsPoints'       => ['required'],
 
-            'shipper.name'         => ['required'],
-            'shipper.contactName'  => ['required'],
-            'shipper.addressLine1' => ['required'],
-            'shipper.addressLine2' => ['required'],
-            'shipper.city'         => ['required'],
-            'shipper.country'      => ['required'],
-            'shipper.phone'        => ['required'],
+        $customer = new Customer(
+            data_get($data, 'customer.name'),
+            data_get($data, 'customer.mobile'),
+            data_get($data, 'customer.addressLine1'),
+            data_get($data, 'customer.city'),
+            data_get($data, 'customer.country')
+        );
 
-        ]);
+        $shipment = new Shipment(
+            data_get($data, 'shipment.referenceNumber'),
+            $customer,
+            data_get($data, 'shipment.type')
+        );
 
-        return $request->all();
+
+        try {
+
+            $result = $smsa->createShipment($shipment);
+
+            return response()->json($result->jsonSerialize(), 201);
+
+        } catch (SmsaWebServiceException $e) {
+
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
     }
 
 }
