@@ -31,7 +31,7 @@ class HomeController extends Controller
         $cities = Cache::remember('smsa.cities', 60 * 24 * 7, function () use ($smsa) {
             $result = $smsa->cities();
 
-            return $result->data;
+            return collect($result->data)->sortBy('name')->toArray();
         });
 
         // We fetch all Smsa retails to use in all vue components.
