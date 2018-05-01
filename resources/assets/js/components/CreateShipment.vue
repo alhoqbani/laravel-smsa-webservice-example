@@ -709,7 +709,9 @@
                         if (res.success) {
                             vm.form.data = {
                                 customer: {},
-                                shipment: {},
+                                shipment: {
+                                    referenceNumber: Math.floor(Date.now() / 1000).toString(),
+                                },
                                 shipper: {},
                             };
                         }

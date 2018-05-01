@@ -34,6 +34,9 @@ class ShipmentsController extends Controller
             data_get($data, 'shipment.type')
         );
 
+        $shipment->setWeight(data_get($data, 'shipment.weight'));
+        $shipment->setItemsCount(data_get($data, 'shipment.itemsCount'));
+
         // We add the shipper if we have shipper details
         if (true === $request->input('addShipper', false)) {
 
