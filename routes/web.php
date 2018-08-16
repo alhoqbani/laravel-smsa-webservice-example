@@ -13,10 +13,8 @@
 
 /** @var \Illuminate\Routing\Router $router */
 
-$router->get('/', function () {
-    return view('welcome');
-});
+$router->redirect('/', '/shipments');
 
-$router->get('/home', 'HomeController@index')->name('home');
-
-$router->get('home/{any}', 'HomeController@index')->where('any', '.*');
+$router->get('/{any}', 'HomeController@index')
+    ->where('any', '.*')
+    ->name('home');
