@@ -1,6 +1,5 @@
 import VueRouter from 'vue-router';
 import Vue from "vue";
-import Home from '../views/Home';
 import Locations from '../views/Locations';
 import Tracking from '../views/Tracking';
 import Shipments from '../views/Shipments';
@@ -12,15 +11,10 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
     mode: 'history',
-    base: 'home',
+    base: '',
     linkActiveClass: 'active',
     linkExactActiveClass: 'active',
     routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: Home,
-        },
         {
             path: '/locations',
             name: 'locations',

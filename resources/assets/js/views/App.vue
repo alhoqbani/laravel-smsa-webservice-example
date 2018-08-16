@@ -6,10 +6,6 @@
 
                     <nav class="nav nav-pills nav-justified">
                         <router-link class="nav-item nav-link"
-                                     :to="{name: 'home'}"
-                                     exact>Home
-                        </router-link>
-                        <router-link class="nav-item nav-link"
                                      :to="{name: 'shipments'}">Shipments
                         </router-link>
                         <router-link class="nav-item nav-link"
