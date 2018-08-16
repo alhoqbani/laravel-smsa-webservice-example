@@ -5,11 +5,7 @@ This is an example app built with Laravel to demonstrate the usage of SMSA WebSe
 
 
 # Live demo:
-This application is hosted on heroku at this [link](http://laravel-smsa-webservice.herokuapp.com/)
-
-User details for login:
-- email: user@example.com
-- password: secret
+This application is hosted on heroku, and you can view a live demo at [http://laravel-smsa-webservice.herokuapp.com/](http://laravel-smsa-webservice.herokuapp.com/)
 
 # Install:
 Make sure you have php and composer installed on your machine
