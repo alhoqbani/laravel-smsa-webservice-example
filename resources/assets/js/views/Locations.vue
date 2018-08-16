@@ -169,11 +169,11 @@
 
             // Process retails to get gps points
             this.retails.forEach(retail => {
-                let points = retail.gps_point.split(", ").map(point => parseFloat(point.trim(',')));
+                let points = retail.gps_point.split(",").map(point => parseFloat(point.trim(',')));
                 this.markers.push({
                     position: {
-                        lat: points[0],
-                        lng: points[1],
+                        lng: points[0],
+                        lat: points[1],
                     },
                     ...retail
                 });
